@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Data.Entity.Core.EntityClient;
-using System.Data.SqlClient;
+﻿using System.Data.Entity.Core.EntityClient;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Hosting;
 using System.Xml.Linq;
 using Vidyano.Service;
-using Vidyano.Service.Repository;
 
 namespace Websites.Service
 {
@@ -33,14 +27,6 @@ namespace Websites.Service
         public override EntityConnection CreateRepositoryConnection(string connectionString)
         {
             return base.CreateRepositoryConnection(ConnectionString ?? connectionString);
-        }
-
-        public override void PreCommandExecute(DbCommand command)
-        {
-            var connStringBuilder = new SqlConnectionStringBuilder(command.Connection.ConnectionString);
-            command.CommandText = command.CommandText.Replace("[Vidyano].", $"[{connStringBuilder.UserID}].");
-
-            base.PreCommandExecute(command);
         }
     }
 }
