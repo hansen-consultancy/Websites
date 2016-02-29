@@ -1,3 +1,6 @@
+/****** Object:  Schema [Vidyano]    Script Date: 2/29/2016 4:05:19 PM ******/
+CREATE SCHEMA [Vidyano]
+GO
 /****** Object:  Table [Vidyano].[CacheUpdates]    Script Date: 2/29/2016 3:22:54 PM ******/
 SET ANSI_NULLS ON
 GO
