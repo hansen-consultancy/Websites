@@ -1,0 +1,1269 @@
+{
+  "Languages": {
+    "en": {
+      "Name": {
+        "en": "English",
+        "pt": "Inglês"
+      }
+    },
+    "pt": {
+      "Name": {
+        "en": "Portuguese",
+        "pt": "Português"
+      }
+    }
+  },
+  "Messages": {
+    "ActionGeneratedAnError": {
+      "Value": {
+        "en": "The action {0} generated an error:\n{1}",
+        "pt": "A ação {0} gerado um erro: {1}"
+      },
+      "IsSystem": true
+    },
+    "ActionNotImplemented": {
+      "Value": {
+        "en": "Action {0} is not implemented.\n\nAdd method to {1}:\n",
+        "pt": "Ação {0} não é implementado.\n\nAdicione método para {1}:\n"
+      },
+      "IsSystem": true
+    },
+    "AddProgramUnitItem": {
+      "Value": {
+        "en": "Add",
+        "pt": "Adicionar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "and": {
+      "Value": {
+        "en": "and",
+        "pt": "e"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AskForDeleteFilter": {
+      "Value": {
+        "en": "Are you sure you want to delete filter '{0}'?",
+        "pt": "Você tem certeza que deseja excluir filtro '{0}'?"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AskForDeleteItems": {
+      "Value": {
+        "en": "Are you sure you want to delete these items?",
+        "pt": "Tem certeza que deseja excluir esses itens?"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AttributeCheckPasswordComplexityRule": {
+      "Value": {
+        "en": "{{0}} does not meet complexity requirements. (minimum length: {0}, including {1})",
+        "pt": "{{0}} não satisfaz os requisitos de complexidade. (comprimento mínimo: {0}, incluindo {1})"
+      },
+      "IsSystem": true
+    },
+    "AttributeCombinationIsUnique": {
+      "Value": {
+        "en": "Combination {0} is unique.",
+        "pt": "Combinação {0} é único."
+      },
+      "IsSystem": true
+    },
+    "AttributeIsInvalid": {
+      "Value": {
+        "en": "{0} is invalid.",
+        "pt": "{0} é inválido."
+      },
+      "IsSystem": true
+    },
+    "AttributeIsRequiredRule": {
+      "Value": {
+        "en": "{0} is required.",
+        "pt": "{0} é necessária."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AttributeIsUnique": {
+      "Value": {
+        "en": "{0} is unique.",
+        "pt": "{0} é único."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AttributeIsValidKeyValueListRule": {
+      "Value": {
+        "en": "{0} does not contain a valid value. (eg: Option1=Value1;Option2=Value2)",
+        "pt": "{0} não contiver um valor válido. (por exemplo: opção1 = valor1; opção2 = valor2)"
+      },
+      "IsSystem": true
+    },
+    "AttributeMaximumLengthRule": {
+      "Value": {
+        "en": "{0} has a maximum length of {1}.",
+        "pt": "{0} tem um comprimento máximo de {1}."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AttributeMaximumValueRule": {
+      "Value": {
+        "en": "{0} has a maximum value of {1}.",
+        "pt": "{0} tem um valor máximo de {1}."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AttributeMinimumValueRule": {
+      "Value": {
+        "en": "{0} has a minimum value of {1}.",
+        "pt": "{0} tem um valor mínimo de {1}."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AttributeNotEmptyRule": {
+      "Value": {
+        "en": "{0} cannot be empty.",
+        "pt": "{0} não pode ser vazio."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "AutoOpenFilter": {
+      "Value": {
+        "en": "Auto open filter:",
+        "pt": "Auto filtro aberto:"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "BulkEditBreadcrumb": {
+      "Value": {
+        "en": "Edit {0}",
+        "pt": "Editar {0}"
+      },
+      "IsSystem": true
+    },
+    "BusinessRuleFailed": {
+      "Value": {
+        "en": "Rule '{0}' failed for {1} with '{2}'.",
+        "pt": "Regra '{0}' falhou para {1} com '{2}'."
+      },
+      "IsSystem": true
+    },
+    "Cancel": {
+      "Value": {
+        "en": "Cancel",
+        "pt": "Cancelar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "CancelSignIn": {
+      "Value": {
+        "en": "Cancel",
+        "pt": "Cancelar"
+      },
+      "IsSystem": true
+    },
+    "Clear": {
+      "Value": {
+        "en": "Clear",
+        "pt": "Clara"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Close": {
+      "Value": {
+        "en": "Close",
+        "pt": "Fechar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ClearFilter": {
+      "Value": {
+        "en": "Clear",
+        "pt": "Clara"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ClearFilterFrom": {
+      "Value": {
+        "en": "Clear filter from {0}",
+        "pt": "Limpar filtro de {0}"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "CompactPagingInfo": {
+      "Value": {
+        "en": "{0} of {1}",
+        "pt": "{0} de {1}"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ConfirmLeavePage": {
+      "Value": {
+        "en": "Are you sure you want to leave this page?",
+        "pt": "Tem certeza que quer deixar esta página?"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ConfirmUnsavedChanges": {
+      "Value": {
+        "en": "Are you sure you want to ignore unsaved changes?",
+        "pt": "Tens a certeza de que você deseja ignorar as alterações não salvas?"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "CouldNotDelete": {
+      "Value": {
+        "en": "Could not delete some entities because they are still referenced in the database: {0}",
+        "pt": "Não foi possível excluir algumas entidades porque eles ainda são referenciados na base de dados: {0}"
+      },
+      "IsSystem": true
+    },
+    "DataFilterControlHeader": {
+      "Value": {
+        "en": "Data Filter:",
+        "pt": "Filtro de dados:"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Default": {
+      "Value": {
+        "en": "Default",
+        "pt": "Padrão"
+      },
+      "IsSystem": true
+    },
+    "DefaultAttributesGroup": {
+      "Value": {
+        "en": "Attributes",
+        "pt": "Atributos"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Delete": {
+      "Value": {
+        "en": "Delete",
+        "pt": "Excluir"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Disabled": {
+      "Value": {
+        "en": "Disabled",
+        "pt": "Com deficiência"
+      },
+      "IsSystem": true
+    },
+    "DistinctEmptyValue": {
+      "Value": {
+        "en": "< Empty >",
+        "pt": "< Vazio >"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "DistinctNullValue": {
+      "Value": {
+        "en": "< Nothing >",
+        "pt": "< Nada >"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "DontSave": {
+      "Value": {
+        "en": "Don't save",
+        "pt": "Não salvar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "EnableAtLeastOneAuthenticationProvider": {
+      "Value": {
+        "en": "At least one authentication provider has to be enabled.",
+        "pt": "Provedor de autenticação pelo menos um tem que ser habilitado."
+      },
+      "IsSystem": true
+    },
+    "Error": {
+      "Value": {
+        "en": "Error",
+        "pt": "Erro"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "False": {
+      "Value": {
+        "en": "False",
+        "pt": "Falso"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Feedback": {
+      "Value": {
+        "en": "Feedback",
+        "pt": "Gabarito"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "FeedbackComment": {
+      "Value": {
+        "en": "Comment",
+        "pt": "Comentário"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "FeedbackGroup": {
+      "Value": {
+        "en": "Information",
+        "pt": "Informações"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "FeedbackScreenshot": {
+      "Value": {
+        "en": "Screenshot",
+        "pt": "Captura de tela"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "FeedbackType": {
+      "Value": {
+        "en": "Type",
+        "pt": "Tipo"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "FeedbackTypes": {
+      "Value": {
+        "en": "Bug;Change Request",
+        "pt": "Bug; Solicitação de alteração"
+      },
+      "IsSystem": true
+    },
+    "FilterName": {
+      "Value": {
+        "en": "Filter name:",
+        "pt": "Nome do filtro:"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "FilterSearchHint": {
+      "Value": {
+        "en": "Search ...",
+        "pt": "Busca..."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "GlobalSearch": {
+      "Value": {
+        "en": "Search this application",
+        "pt": "Esta aplicação da pesquisa"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "HelpBreadcrumb": {
+      "Value": {
+        "en": "{0} - Help",
+        "pt": "{0} - ajuda"
+      },
+      "IsSystem": true
+    },
+    "IgnoreUnsavedChanges": {
+      "Value": {
+        "en": "Ignore changes",
+        "pt": "Ignorar as alterações"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ImpersonateMessage": {
+      "Value": {
+        "en": "Open the following link in a new private browser window",
+        "pt": "Abra o link a seguir em uma nova janela de navegador privada"
+      },
+      "IsSystem": true
+    },
+    "ImpersonateUser": {
+      "Value": {
+        "en": "Impersonate {0}",
+        "pt": "Personificar {0}"
+      },
+      "IsSystem": true
+    },
+    "Important": {
+      "Value": {
+        "en": "Important",
+        "pt": "Importante"
+      },
+      "IsSystem": true
+    },
+    "InTrial": {
+      "Value": {
+        "en": "Your application is currently running in trial mode",
+        "pt": "Seu aplicativo está sendo executado no modo de teste"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "InvalidImage": {
+      "Value": {
+        "en": "Invalid image.",
+        "pt": "Imagem inválida."
+      },
+      "IsSystem": true
+    },
+    "InvalidJavaScriptCode": {
+      "Value": {
+        "en": "Invalid JavaScript code. Only empty, comments or function() {} is allowed.",
+        "pt": "Código JavaScript inválido. Apenas vazio, comentários ou {} function() é permitido."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "InvalidNumberOfSelectedItems": {
+      "Value": {
+        "en": "Invalid number of selected items.",
+        "pt": "Número inválido de itens selecionados."
+      },
+      "IsSystem": true
+    },
+    "InvalidUserNameOrPassword": {
+      "Value": {
+        "en": "Invalid user name or password.",
+        "pt": "Nome de usuário inválido ou senha."
+      },
+      "IsSystem": true
+    },
+    "IsBase64Rule": {
+      "Value": {
+        "en": "{0} requires a valid base64 value.",
+        "pt": "{0} requer um valor válido de base64."
+      },
+      "IsSystem": true
+    },
+    "IsDefaultFilter": {
+      "Value": {
+        "en": "Is default filter:",
+        "pt": "É o filtro padrão:"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "IsRegexRule": {
+      "Value": {
+        "en": "{0} requires a valid regular expression.",
+        "pt": "{0} requer uma expressão regular válida."
+      },
+      "IsSystem": true
+    },
+    "IsValidCultureRule": {
+      "Value": {
+        "en": "{0} requires a valid culture name.",
+        "pt": "{0} requer um nome de cultura válido."
+      },
+      "IsSystem": true
+    },
+    "IsValidEmailRule": {
+      "Value": {
+        "en": "{0} requires a valid email address.",
+        "pt": "{0} requer um endereço de email válido."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "IsValidUrlRule": {
+      "Value": {
+        "en": "{0} requires a valid website address.",
+        "pt": "{0} requer um endereço de site válido."
+      },
+      "IsSystem": true
+    },
+    "IsWordRule": {
+      "Value": {
+        "en": "{0} must only contain word characters (letters, digits or underscores).",
+        "pt": "{0} deve conter apenas caracteres alfabéticos (letras, dígitos ou sublinhados)."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "IsWordWithDotRule": {
+      "Value": {
+        "en": "{0} must only contain word characters (letters, digits or underscores) or dots.",
+        "pt": "{0} deve conter apenas caracteres alfabéticos (letras, dígitos ou sublinhados) ou pontos."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "KeepUnsavedChanges": {
+      "Value": {
+        "en": "Keep editing",
+        "pt": "Manter edição"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Language": {
+      "Value": {
+        "en": "Language",
+        "pt": "Língua"
+      },
+      "IsSystem": true
+    },
+    "LastLogins": {
+      "Value": {
+        "en": "Last logins (per month)",
+        "pt": "Últimas logons (por mês)"
+      },
+      "IsSystem": true
+    },
+    "LastMonth": {
+      "Value": {
+        "en": "Last month",
+        "pt": "No mês passado"
+      },
+      "IsSystem": true
+    },
+    "LastWeek": {
+      "Value": {
+        "en": "Last week",
+        "pt": "A semana passada"
+      },
+      "IsSystem": true
+    },
+    "LastYear": {
+      "Value": {
+        "en": "Last year",
+        "pt": "No ano passado"
+      },
+      "IsSystem": true
+    },
+    "LeaveThisPage": {
+      "Value": {
+        "en": "Leave this page",
+        "pt": "Deixe esta página"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ListLastSeparator": {
+      "Value": {
+        "en": " and ",
+        "pt": " e "
+      },
+      "IsSystem": true
+    },
+    "ListSeparator": {
+      "Value": {
+        "en": ", ",
+        "pt": ", "
+      },
+      "IsSystem": true
+    },
+    "LoadMore": {
+      "Value": {
+        "en": "Load more ...",
+        "pt": "Carrega mais..."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "LocalTimeZone": {
+      "Value": {
+        "en": "< Local Time Zone >",
+        "pt": "< Horário Local Zona >"
+      },
+      "IsSystem": true
+    },
+    "Manage": {
+      "Value": {
+        "en": "Manage",
+        "pt": "Gerenciar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "MustBeSignedIn": {
+      "Value": {
+        "en": "You must be signed in before you can use this application.",
+        "pt": "Você deve ser assinado antes de usar este aplicativo."
+      },
+      "IsSystem": true
+    },
+    "NewFilter": {
+      "Value": {
+        "en": "New Filter ...",
+        "pt": "Novo filtro..."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "NewObjectBreadcrumb": {
+      "Value": {
+        "en": "New {0}",
+        "pt": "Nova {0}"
+      },
+      "IsSystem": true
+    },
+    "NewReference": {
+      "Value": {
+        "en": "New",
+        "pt": "Novo"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "NewUsers": {
+      "Value": {
+        "en": "New users (per month)",
+        "pt": "Novos usuários (por mês)"
+      },
+      "IsSystem": true
+    },
+    "NextMonth": {
+      "Value": {
+        "en": "Next month",
+        "pt": "No próximo mês"
+      },
+      "IsSystem": true
+    },
+    "NextWeek": {
+      "Value": {
+        "en": "Next week",
+        "pt": "Na próxima semana"
+      },
+      "IsSystem": true
+    },
+    "NextYear": {
+      "Value": {
+        "en": "Next year",
+        "pt": "No próximo ano"
+      },
+      "IsSystem": true
+    },
+    "No": {
+      "Value": {
+        "en": "No",
+        "pt": "Não"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "NoItemsSelected": {
+      "Value": {
+        "en": "No items selected.",
+        "pt": "Nenhum item selecionado."
+      },
+      "IsSystem": true
+    },
+    "NoMicrosoftTranslatorAppIdSpecified": {
+      "Value": {
+        "en": "No MicrosoftTranslatorAppId has been speficied in the settings. Current translations will be copied.",
+        "pt": "Nenhum MicrosoftTranslatorAppId foi especificar nas configurações. Traduções atuais serão copiadas."
+      },
+      "IsSystem": true
+    },
+    "NoResultsFound": {
+      "Value": {
+        "en": "No items match your search.",
+        "pt": "Não há itens correspondem a sua pesquisa."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "NoRightOnPersistentObject": {
+      "Value": {
+        "en": "Could not use the '{0}' right on '{1}'.",
+        "pt": "Não poderia usar o '{0}' na '{1}'."
+      },
+      "IsSystem": true
+    },
+    "Not": {
+      "Value": {
+        "en": "Not",
+        "pt": "Não"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "NotFound": {
+      "Value": {
+        "en": "We are sorry, the page you requested cannot be found.",
+        "pt": "Lamentamos, a página que você solicitou não pode ser encontrada."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Notice": {
+      "Value": {
+        "en": "Notice",
+        "pt": "Aviso prévio"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "NotificationEmailBody": {
+      "Value": {
+        "en": "A new feedback entry of type {0} has been recorded.\n\n{1}",
+        "pt": "Registou-se uma nova entrada de realimentação do tipo {0}.\n\n{1}"
+      },
+      "IsSystem": true
+    },
+    "NotificationEmailSubject": {
+      "Value": {
+        "en": "New feedback from user {0}.",
+        "pt": "Novo gabarito de usuário {0}."
+      },
+      "IsSystem": true
+    },
+    "OK": {
+      "Value": {
+        "en": "OK",
+        "pt": "Okey"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Or": {
+      "Value": {
+        "en": "Or",
+        "pt": "Ou"
+      },
+      "IsSystem": true
+    },
+    "PagesWithUnsavedChanges": {
+      "Value": {
+        "en": "Some pages contain unsaved changes.",
+        "pt": "Algumas páginas contêm alterações não salvas."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "PageWithUnsavedChanges": {
+      "Value": {
+        "en": "This page contains unsaved changes.",
+        "pt": "Esta página contém as alterações não salvas."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Password": {
+      "Value": {
+        "en": "Password",
+        "pt": "Senha"
+      },
+      "IsSystem": true
+    },
+    "PasswordComplexityDigit": {
+      "Value": {
+        "en": "digits",
+        "pt": "dígitos"
+      },
+      "IsSystem": true
+    },
+    "PasswordComplexityLowercase": {
+      "Value": {
+        "en": "lowercase",
+        "pt": "letras minúsculas"
+      },
+      "IsSystem": true
+    },
+    "PasswordComplexityNone": {
+      "Value": {
+        "en": "characters",
+        "pt": "personagens"
+      },
+      "IsSystem": true
+    },
+    "PasswordComplexitySpecial": {
+      "Value": {
+        "en": "special characters",
+        "pt": "caracteres especiais"
+      },
+      "IsSystem": true
+    },
+    "PasswordComplexityUppercase": {
+      "Value": {
+        "en": "uppercase",
+        "pt": "letras maiúsculas"
+      },
+      "IsSystem": true
+    },
+    "Paste": {
+      "Value": {
+        "en": "Paste",
+        "pt": "Colar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Pin": {
+      "Value": {
+        "en": "Pin",
+        "pt": "PIN"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "ReferenceEmptyValue": {
+      "Value": {
+        "en": "...",
+        "pt": "..."
+      },
+      "IsSystem": true
+    },
+    "Related": {
+      "Value": {
+        "en": "Related",
+        "pt": "Relacionados"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "RemoveFile": {
+      "Value": {
+        "en": "Remove",
+        "pt": "Remover"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "RemoveImage": {
+      "Value": {
+        "en": "Remove",
+        "pt": "Remover"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "RemoveReference": {
+      "Value": {
+        "en": "Remove",
+        "pt": "Remover"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Required": {
+      "Value": {
+        "en": "Required",
+        "pt": "Necessário"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Reset": {
+      "Value": {
+        "en": "Reset",
+        "pt": "Redefinir"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Retry": {
+      "Value": {
+        "en": "Retry",
+        "pt": "Tente novamente"
+      },
+      "IsSystem": true
+    },
+    "RetrySignIn": {
+      "Value": {
+        "en": "Retry",
+        "pt": "Tente novamente"
+      },
+      "IsSystem": true
+    },
+    "Save": {
+      "Value": {
+        "en": "Save",
+        "pt": "Salvar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SaveAs": {
+      "Value": {
+        "en": "Save As...",
+        "pt": "Salvar como..."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SaveForLater": {
+      "Value": {
+        "en": "Save for later",
+        "pt": "Guardar para mais tarde"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Search": {
+      "Value": {
+        "en": "Search",
+        "pt": "Pesquisa"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Search_Condition_And": {
+      "Value": {
+        "en": "and",
+        "pt": "e"
+      },
+      "IsSystem": true
+    },
+    "Search_Condition_Or": {
+      "Value": {
+        "en": "or",
+        "pt": "ou"
+      },
+      "IsSystem": true
+    },
+    "SelectedObjectCouldNotBeFoundOnTheDatabase": {
+      "Value": {
+        "en": "The selected object for '{0}' could not be found in the database.",
+        "pt": "O objeto selecionado para '{0}' não pôde ser encontrado no banco de dados."
+      },
+      "IsSystem": true
+    },
+    "SendEmail": {
+      "Value": {
+        "en": "Send Email",
+        "pt": "Enviar E-mail"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SignIn": {
+      "Value": {
+        "en": "Sign in",
+        "pt": "Entrar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SignInError": {
+      "Value": {
+        "en": "An error occurred while signing in",
+        "pt": "Ocorreu um erro ao assinar"
+      },
+      "IsSystem": true
+    },
+    "SigningIn": {
+      "Value": {
+        "en": "Signing in ...",
+        "pt": "Assinatura em..."
+      },
+      "IsSystem": true
+    },
+    "SignInUsing": {
+      "Value": {
+        "en": "Sign in using",
+        "pt": "Cadastre-se uso"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SignOut": {
+      "Value": {
+        "en": "Sign out",
+        "pt": "Cadastre-se para fora"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortAscending": {
+      "Value": {
+        "en": "Sort ascending",
+        "pt": "Classificação crescente"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortAToZ": {
+      "Value": {
+        "en": "Sort A to Z",
+        "pt": "Tipo À Z"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortDescending": {
+      "Value": {
+        "en": "Sort descending",
+        "pt": "Classificação decrescente"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortLargestToSmallest": {
+      "Value": {
+        "en": "Sort largest to smallest",
+        "pt": "Classificar do maior para o menor"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortNewestToOldest": {
+      "Value": {
+        "en": "Sort newest to oldest",
+        "pt": "Classificar mais recente ao mais antigo"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortOldestToNewest": {
+      "Value": {
+        "en": "Sort oldest to newest",
+        "pt": "Classificar do mais antigo para mais recente"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortSmallestToLargest": {
+      "Value": {
+        "en": "Sort smallest to largest",
+        "pt": "Classificar do menor para o maior"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "SortZToA": {
+      "Value": {
+        "en": "Sort Z to A",
+        "pt": "Tipo Z para A"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "StayOnThisPage": {
+      "Value": {
+        "en": "Stay on this page",
+        "pt": "Permanecer nesta página"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "StaySignedIn": {
+      "Value": {
+        "en": "Stay signed in",
+        "pt": "Estadia, assinado em"
+      },
+      "IsSystem": true
+    },
+    "ThisMonth": {
+      "Value": {
+        "en": "This month",
+        "pt": "Este mês"
+      },
+      "IsSystem": true
+    },
+    "ThisWeek": {
+      "Value": {
+        "en": "This week",
+        "pt": "Esta semana"
+      },
+      "IsSystem": true
+    },
+    "ThisYear": {
+      "Value": {
+        "en": "This year",
+        "pt": "Este ano"
+      },
+      "IsSystem": true
+    },
+    "Today": {
+      "Value": {
+        "en": "Today",
+        "pt": "Hoje"
+      },
+      "IsSystem": true
+    },
+    "Tomorrow": {
+      "Value": {
+        "en": "Tomorrow",
+        "pt": "Amanhã"
+      },
+      "IsSystem": true
+    },
+    "True": {
+      "Value": {
+        "en": "True",
+        "pt": "Verdade"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "UnableToLoadEntityForPersistentObject": {
+      "Value": {
+        "en": "Unable to load the entity for PersistentObject {0} ({1}).",
+        "pt": "Não é possível carregar a entidade para PersistentObject {0} ({1})."
+      },
+      "IsSystem": true
+    },
+    "UnableToLoadObject": {
+      "Value": {
+        "en": "Unable to load object.",
+        "pt": "Não é possível carregar o objeto."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "UnknownValueForFilter": {
+      "Value": {
+        "en": "Could not use '{0}' for {1}.",
+        "pt": "Não poderia usar '{0}' para {1}."
+      },
+      "IsSystem": true
+    },
+    "UnmatchedPasswords": {
+      "Value": {
+        "en": "Passwords do not match.",
+        "pt": "As senhas não coincidem."
+      },
+      "IsSystem": true
+    },
+    "Unpin": {
+      "Value": {
+        "en": "Unpin",
+        "pt": "Desafixar"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "UnsavedChangesDetected": {
+      "Value": {
+        "en": "Some pages contain unsaved changes.\nDo you want to save changes?",
+        "pt": "Algumas páginas contêm alterações não salvas.\nVocê quer salvar as alterações?"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "UserName": {
+      "Value": {
+        "en": "User name",
+        "pt": "Nome de usuário"
+      },
+      "IsSystem": true
+    },
+    "UserSettings": {
+      "Value": {
+        "en": "Settings",
+        "pt": "Configurações"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "UserSettingsBreadcrumb": {
+      "Value": {
+        "en": "User Settings",
+        "pt": "Configurações de usuário"
+      },
+      "IsSystem": true
+    },
+    "UserSettingsConfirmPassword": {
+      "Value": {
+        "en": "Confirm new password",
+        "pt": "Confirmar nova senha"
+      },
+      "IsSystem": true
+    },
+    "UserSettingsCultureInfo": {
+      "Value": {
+        "en": "Date, time and number format",
+        "pt": "Data, hora e formato de número"
+      },
+      "IsSystem": true
+    },
+    "UserSettingsLanguage": {
+      "Value": {
+        "en": "Language",
+        "pt": "Língua"
+      },
+      "IsSystem": true
+    },
+    "UserSettingsLanguageGroup": {
+      "Value": {
+        "en": "Language",
+        "pt": "Língua"
+      },
+      "IsSystem": true
+    },
+    "UserSettingsNewPassword": {
+      "Value": {
+        "en": "New password",
+        "pt": "Nova senha"
+      },
+      "IsSystem": true
+    },
+    "UserSettingsPasswordGroup": {
+      "Value": {
+        "en": "Password",
+        "pt": "Senha"
+      },
+      "IsSystem": true
+    },
+    "ValidationRulesFailed": {
+      "Value": {
+        "en": "Some required information is missing or incomplete.",
+        "pt": "Algumas informações necessárias estão em falta ou incompleto."
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Warning": {
+      "Value": {
+        "en": "Warning",
+        "pt": "Aviso"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Yes": {
+      "Value": {
+        "en": "Yes",
+        "pt": "Sim"
+      },
+      "IsClient": true,
+      "IsSystem": true
+    },
+    "Yesterday": {
+      "Value": {
+        "en": "Yesterday",
+        "pt": "Ontem"
+      },
+      "IsSystem": true
+    }
+  }
+}

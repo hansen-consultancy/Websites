@@ -1,0 +1,22 @@
+{
+  "Groups": {
+    "7361d619-19c3-42f3-b860-730aa4cfcd1b": "Websites"
+  },
+  "Rights": [
+    {
+      "Id": "277c8932-b16e-4c9f-9183-8b5ee6f30e33",
+      "Resource": "Query/Vidyano.Page",
+      "UserId": "7361d619-19c3-42f3-b860-730aa4cfcd1b"
+    },
+    {
+      "Id": "3f1aabe2-f5b2-44f7-814c-e53338bf0e01",
+      "Resource": "Read/Vidyano.Website",
+      "UserId": "7361d619-19c3-42f3-b860-730aa4cfcd1b"
+    },
+    {
+      "Id": "07533b55-b1b5-454b-8d2c-49198e09e0a4",
+      "Resource": "ReadEdit/Websites.Contact",
+      "UserId": "7361d619-19c3-42f3-b860-730aa4cfcd1b"
+    }
+  ]
+}

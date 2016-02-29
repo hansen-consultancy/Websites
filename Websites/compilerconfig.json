@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "WebComponents/ContactForm/contact-form.css",
+    "inputFile": "WebComponents/ContactForm/contact-form.scss"
+  },
+  {
+    "outputFile": "WebComponents/Lightbox/lightbox.css",
+    "inputFile": "WebComponents/Lightbox/lightbox.scss"
+  }
+]

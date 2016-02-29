@@ -1,0 +1,19 @@
+{
+  "Websites": {
+    "": {
+      "Bindings": [
+        "*/old"
+      ]
+    },
+    "Web²": {
+      "Label": {
+        "en": "Web²"
+      },
+      "Type": 1,
+      "Bindings": [
+        "*"
+      ],
+      "Pages": []
+    }
+  }
+}

@@ -1,0 +1,17 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "sourceMap": false
+  },
+  "files": [
+    "Scripts/Typings/Vidyano/Vidyano.d.ts",
+    "WebComponents/ContactForm/contact-form.ts",
+    "WebComponents/PageAnchor/page-anchor.ts",
+    "WebComponents/PageSection/page-section.ts",
+    "WebComponents/Lightbox/lightbox.ts"
+  ]
+}

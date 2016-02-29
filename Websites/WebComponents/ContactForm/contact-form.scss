@@ -1,0 +1,22 @@
+﻿:host {
+    display: block;
+    text-align: left;
+
+    vi-grid {
+
+        paper-input, paper-textarea {
+            --paper-input-container-focus-color: var(--theme-color);
+            --paper-input-container-color: #999;
+        }
+
+        div {
+            text-align: center;
+
+            paper-button {
+                background-color: var(--theme-accent-color);
+                color: white;
+                margin-top: 40px;
+            }
+        }
+    }
+}
