@@ -136,6 +136,14 @@
     <Content Include=".bowerrc">
       <DependentUpon>bower.json</DependentUpon>
     </Content>
+    <Content Include="App_Data\Websites\2sky\2sky.css">
+      <DependentUpon>2sky.scss</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Websites\2sky\2sky.min.css">
+      <DependentUpon>2sky.css</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Websites\2sky\Images\logo.png" />
+    <Content Include="App_Data\Websites\2sky\index.html" />
     <Content Include="App_Data\Websites\Web²\index.html" />
     <Content Include="Global.asax" />
     <Content Include="libs\imports.html" />
@@ -179,6 +187,8 @@
     <Content Include="WebComponents\PageSection\page-section.js">
       <DependentUpon>page-section.ts</DependentUpon>
     </Content>
+    <Content Include="App_Data\Websites\2sky\2sky.scss" />
+    <Content Include="App_Data\Websites\2sky\Pages\Home.md" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

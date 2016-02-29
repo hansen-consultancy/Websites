@@ -5,6 +5,30 @@
         "*/old"
       ]
     },
+    "2sky": {
+      "Label": {
+        "en": "2sky",
+        "pt": "2sky"
+      },
+      "Type": 1,
+      "Bindings": [
+        "*/2sky"
+      ],
+      "DefaultUser": "9fd5f914-60cf-44f6-959e-60b01c7ead10",
+      "Pages": [
+        {
+          "Name": "Home",
+          "Label": {
+            "en": "Home",
+            "pt": "Home"
+          },
+          "Offset": 10
+        }
+      ],
+      "ContactFrom": "GcFGD3B5n1TOnd53devKcDnnKp1ccNLqRryVtPb8E1Tzua8MPIAIMmLpUlO7tWQmMJ2IMKt1o9IwyXpJp1AeJFTfEUJ6o9UECOlbWW8h874jTu3k37TosdbBiY7ebx6P",
+      "ContactTo": "W2GufNTnyyFF5aUxKrv6DEEQRRjBre21g/YtqygsYpwcEwA/mil4kfpwMG+pHCc4QClbhL8onYkUazsqT4LwcDR1cHrdbnJcXo1XhfKaY3+9Y1HDTOni5eL1xkwjEU9+",
+      "ContactConfirmation": "Thank you for contacting us! We'll respond in a few days if needed."
+    },
     "Web²": {
       "Label": {
         "en": "Web²"

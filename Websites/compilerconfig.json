@@ -6,5 +6,9 @@
   {
     "outputFile": "WebComponents/Lightbox/lightbox.css",
     "inputFile": "WebComponents/Lightbox/lightbox.scss"
+  },
+  {
+    "outputFile": "App_Data/Websites/2sky/2sky.css",
+    "inputFile": "App_Data/Websites/2sky/2sky.scss"
   }
 ]

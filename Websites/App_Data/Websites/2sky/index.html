@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>2sky</title>
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <script src="../web2/Libs/webcomponentsjs/webcomponents-lite.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link rel="import" href="../web2/websites.html" />
+    <link rel="import" href="../web2/vulcanize/libs/imports.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/ContactForm/contact-form.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/PageAnchor/page-anchor.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/PageSection/page-section.html" />
+    <link rel="stylesheet" href="static/2sky.css" />
+</head>
+
+<body class="fullbleed">
+    <vi-website class="fit">
+        <template is="dom-template">
+            <paper-drawer-panel force-narrow disable-edge-swipe right-drawer>
+                <paper-header-panel mode="seamed" drawer>
+                    <paper-toolbar>
+                        <div><img src="static/images/logo.png" height="30"></div>
+                    </paper-toolbar>
+                    <template is="dom-repeat" items="[[website.pages]]" as="page">
+                        <a is="vi-page-anchor" page="[[page]]"></a>
+                    </template>
+                </paper-header-panel>
+                <paper-header-panel mode="waterfall" main>
+                    <paper-toolbar class="header">
+                        <div class="flex"><img src="static/images/logo.png" height="30"></div>
+                        <nav hide-phone>
+                            <template is="dom-repeat" items="[[website.pages]]" as="page">
+                                <a is="vi-page-anchor" page="[[page]]"></a>
+                            </template>
+                        </nav>
+                        <paper-icon-button icon="menu" paper-drawer-toggle hide-desktop hide-tablet></paper-icon-button>
+                    </paper-toolbar>
+                    <div>
+                        <template is="dom-repeat" items="[[website.pages]]" as="page">
+                            <section page="[[page]]" is="vi-page-section" class="layout horizontal center-center">
+                                <marked-element markdown="[[page.content]]"></marked-element>
+                            </section>
+                        </template>
+                        <google-map fit-to-markers api-key="AIzaSyDifwwCw0WiG7SkuvsX861rTxCHp2ai0MY" zoom="18">
+                            <google-map-marker latitude="51.141535158125876" longitude="4.442151016235357" title="2sky"></google-map-marker>
+                        </google-map>
+                        <footer class="layout horizontal center-center">Copyright © 2016 - 2sky</footer>
+                    </div>
+                </paper-header-panel>
+            </paper-drawer-panel>
+        </template>
+    </vi-website>
+</body>
+</html>
