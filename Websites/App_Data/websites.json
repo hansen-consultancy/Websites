@@ -19,11 +19,30 @@
       "DefaultUser": "9fd5f914-60cf-44f6-959e-60b01c7ead10",
       "Pages": [
         {
+          "Name": "Advantages",
+          "Label": {
+            "en": "Advantages",
+            "pt": "Advantages"
+          },
+          "Queries": [],
+          "Offset": 20
+        },
+        {
+          "Name": "Approach",
+          "Label": {
+            "en": "Approach",
+            "pt": "Approach"
+          },
+          "Queries": [],
+          "Offset": 30
+        },
+        {
           "Name": "Home",
           "Label": {
             "en": "Home",
             "pt": "Home"
           },
+          "Queries": [],
           "Offset": 10
         }
       ],

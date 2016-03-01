@@ -23,7 +23,7 @@
             <paper-drawer-panel force-narrow disable-edge-swipe right-drawer>
                 <paper-header-panel mode="seamed" drawer>
                     <paper-toolbar>
-                        <div><img src="static/images/logo.png" height="30"></div>
+                        <div><img src="static/images/logo.png"></div>
                     </paper-toolbar>
                     <template is="dom-repeat" items="[[website.pages]]" as="page">
                         <a is="vi-page-anchor" page="[[page]]"></a>
@@ -31,7 +31,7 @@
                 </paper-header-panel>
                 <paper-header-panel mode="waterfall" main>
                     <paper-toolbar class="header">
-                        <div class="flex"><img src="static/images/logo.png" height="30"></div>
+                        <div class="flex"><a href="#Home"><img src="static/images/logo.png"></a></div>
                         <nav hide-phone>
                             <template is="dom-repeat" items="[[website.pages]]" as="page">
                                 <a is="vi-page-anchor" page="[[page]]"></a>
@@ -45,9 +45,9 @@
                                 <marked-element markdown="[[page.content]]"></marked-element>
                             </section>
                         </template>
-                        <google-map fit-to-markers api-key="AIzaSyDifwwCw0WiG7SkuvsX861rTxCHp2ai0MY" zoom="18">
+                        <!--<google-map fit-to-markers api-key="AIzaSyDifwwCw0WiG7SkuvsX861rTxCHp2ai0MY" zoom="18">
                             <google-map-marker latitude="51.141535158125876" longitude="4.442151016235357" title="2sky"></google-map-marker>
-                        </google-map>
+                        </google-map>-->
                         <footer class="layout horizontal center-center">Copyright © 2016 - 2sky</footer>
                     </div>
                 </paper-header-panel>

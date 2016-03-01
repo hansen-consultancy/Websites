@@ -9,7 +9,7 @@ html, body {
 }
 
 paper-toolbar {
-    background-color: $mainColor !important;
+    background-color: white !important;
 
     &.header {
         paper-icon-button[icon="menu"] {
@@ -23,8 +23,10 @@ paper-toolbar {
             a {
                 display: inline-block;
                 padding: 0 12px;
-                color: white !important;
+                color: $mainColor !important;
                 text-decoration: none !important;
+                text-transform: uppercase;
+                font-size: 12px;
             }
         }
     }
@@ -88,15 +90,39 @@ section {
     }
 
     h2 {
-        font-size: 24px;
-        color: #4a4a4a;
-        font-weight: 500;
+        font-size: 22px;
+        color: #333;
+        font-weight: bold;
         text-transform: uppercase;
         margin-top: 0;
+        position: relative;
+        padding-bottom: 12px;
+    
+        &:after {
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 75px);
+            height: 1px;
+            width: 150px;
+            content: " ";
+            background-image: -webkit-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+            background-image: -moz-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+            background-image: -ms-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+            background-image: -o-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+            opacity: 0.75;
+        }
+    }
+
+    h3 {
+        color: #333;
     }
 
     &#Home {
-        background-color: $mainColor;
+        background: $mainColor; /* For browsers that do not support gradients */
+        background: -webkit-radial-gradient(#0095e2, $mainColor); /* Safari 5.1 to 6.0 */
+        background: -o-radial-gradient(#0095e2, $mainColor); /* For Opera 11.6 to 12.0 */
+        background: -moz-radial-gradient(#0095e2, $mainColor); /* For Firefox 3.6 to 15 */
+        background: radial-gradient(#0095e2, $mainColor); /* Standard syntax */
         color: white;
         min-height: 440px;
         text-transform: uppercase;
@@ -107,12 +133,26 @@ section {
             padding-right: 12px;
         }
 
+        &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            content: " ";
+            opacity: 0.1;
+            background-image: url(images/top.png);
+            background-repeat: repeat-x;
+            background-size: cover;
+            background-position: bottom left;
+        }
+
         marked-element {
             max-width: 800px;
         }
 
         .title {
-            font-size: 48px;
+            font-size: 32px;
             line-height: normal;
             text-align: center;
             text-transform: uppercase;
@@ -135,6 +175,45 @@ section {
             line-height: 20px;
             width: 150px;
         }
+    }
+
+    &#Advantages {
+        marked-element {
+            flex: 1;
+        }
+
+        vi-grid {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1000px;
+
+            > div {
+                text-align: center;
+                padding: 0 12px;
+
+                > img {
+                    opacity: 0.25;
+                }
+
+                h3 {
+                    white-space: nowrap;
+                    margin-bottom: 6px;
+                }
+
+                h4 {
+                    color: #666;
+                    font-weight: 400;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    &#Approach {
+        border-style: solid;
+        border-color: #E2E2E9;
+        border-width: 1px 0;
+        background-color:#F7F8FA;
     }
 
     &#Contact {
