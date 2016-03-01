@@ -112,8 +112,8 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Vidyano.Service, Version=5.1.33401.3771, Culture=neutral, PublicKeyToken=d51b97a7f46ba8b6, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vidyano.Service.5.1.33401.3771\lib\net45\Vidyano.Service.dll</HintPath>
+    <Reference Include="Vidyano.Service, Version=5.1.33502.3775, Culture=neutral, PublicKeyToken=d51b97a7f46ba8b6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vidyano.Service.5.1.33502.3775\lib\net45\Vidyano.Service.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Vidyano.Web2, Version=0.11.14.0, Culture=neutral, processorArchitecture=MSIL">
