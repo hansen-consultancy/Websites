@@ -759,6 +759,16 @@ interface PolymerDomApi {
     removeChild(oldChild: Node | Vidyano.WebComponents.WebComponent): Node | Vidyano.WebComponents.WebComponent;
     replaceChild(newChild: Node | Vidyano.WebComponents.WebComponent, oldChild: Node | Vidyano.WebComponents.WebComponent): Node;
     getEffectiveChildNodes(): Node[];
+    observeNodes(callBack: (info: PolymerDomChangedInfo) => void): PolymerDomChangeObserver;
+    unobserveNodes(observer: PolymerDomChangeObserver);
+}
+
+interface PolymerDomChangedInfo {
+    addedNodes: Node;
+    removedNodes: Node;
+}
+
+interface PolymerDomChangeObserver {
 }
 
 interface PolymerTrackEvent extends CustomEvent {
@@ -821,6 +831,11 @@ declare var Polymer: {
     dom(element: Node | Vidyano.WebComponents.WebComponent): PolymerDomApi;
     getRegisteredPrototype(tagName: string): any;
 
+    /**
+     * Returns true if the element is a Polymer web component.
+     */
+    isInstance(element: HTMLElement): boolean;
+
     whenReady(callback: () => void): void;
 
     /**
@@ -847,7 +862,792 @@ declare class Queue {
     add<T>(work: () => Promise<T>): Promise<T>;
     getQueueLength(): number;
 }
-interface ISortable {
+// Type definitions for QUnit v1.16
+// Project: http://qunitjs.com/
+// Definitions by: Diullei Gomes <https://github.com/diullei>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+
+
+interface DoneCallbackObject {
+    /**
+    * The number of failed assertions
+    */
+    failed: number;
+
+    /**
+    * The number of passed assertions
+    */
+    passed: number;
+
+    /**
+    * The total number of assertions
+    */
+    total: number;
+
+    /**
+    * The time in milliseconds it took tests to run from start to finish.
+    */
+    runtime: number;
+}
+
+interface LogCallbackObject {
+    /**
+    * The boolean result of an assertion, true means passed, false means failed.
+    */
+    result: boolean;
+
+    /**
+    * One side of a comparision assertion. Can be undefined when ok() is used.
+    */
+    actual: Object;
+
+    /**
+    * One side of a comparision assertion. Can be undefined when ok() is used.
+    */
+    expected: Object;
+
+    /**
+    * A string description provided by the assertion.
+    */
+    message: string;
+
+    /**
+    * The associated stacktrace, either from an exception or pointing to the source
+    * of the assertion. Depends on browser support for providing stacktraces, so can be
+    * undefined.
+    */
+    source: string;
+}
+
+interface ModuleStartCallbackObject {
+    /**
+    * Name of the next module to run
+    */
+    name: string;
+}
+
+interface ModuleDoneCallbackObject {
+    /**
+    * Name of this module
+    */
+    name: string;
+
+    /**
+    * The number of failed assertions
+    */
+    failed: number;
+
+    /**
+    * The number of passed assertions
+    */
+    passed: number;
+
+    /**
+    * The total number of assertions
+    */
+    total: number;
+}
+
+interface TestDoneCallbackObject {
+    /**
+    * TName of the next test to run
+    */
+    name: string;
+
+    /**
+    * Name of the current module
+    */
+    module: string;
+
+    /**
+    * The number of failed assertions
+    */
+    failed: number;
+
+    /**
+    * The number of passed assertions
+    */
+    passed: number;
+
+    /**
+    * The total number of assertions
+    */
+    total: number;
+
+    /**
+    * The total runtime, including setup and teardown
+    */
+    duration: number;
+}
+
+interface TestStartCallbackObject {
+    /**
+    * Name of the next test to run
+    */
+    name: string;
+
+    /**
+    * Name of the current module
+    */
+    module: string;
+}
+
+interface Config {
+    altertitle: boolean;
+    autostart: boolean;
+    current: Object;
+    reorder: boolean;
+    requireExpects: boolean;
+    testTimeout: number;
+    urlConfig: Array<URLConfigItem>;
+    done: any;
+}
+
+interface URLConfigItem {
+    id: string;
+    label: string;
+    tooltip: string;
+}
+
+interface LifecycleObject {
+    /**
+     * Runs before each test
+     * @param assert
+     * @deprecated
+     */
+    setup?: (assert: QUnitAssert) => void;
+
+    /**
+     * Runs after each test
+     * @param assert
+     * @deprecated
+     */
+    teardown?: (assert: QUnitAssert) => void;
+    /**
+     * Runs before each test
+     * @param assert
+     */
+    beforeEach?: (assert: QUnitAssert) => void;
+    /**
+     * Runs after each test
+     * @param assert
+     */
+    afterEach?: (assert: QUnitAssert) => void;
+
+    /**
+     * Any additional properties on the hooks object will be added to that context.
+     */
+    [property: string]: any;
+}
+
+interface QUnitAssert {
+    /* ASSERT */
+    assert: any;
+    current_testEnvironment: any;
+    jsDump: any;
+
+    /**
+    * Instruct QUnit to wait for an asynchronous operation.
+    *
+    * When your test has any asynchronous exit points, call assert.async() to get a unique
+    * resolution callback for each async operation. The callback returned from assert.async()
+    * will throw an Error if is invoked more than once.
+    */
+    async(): () => void;
+
+    /**
+    * A deep recursive comparison assertion, working on primitive types, arrays, objects,
+    * regular expressions, dates and functions.
+    *
+    * The deepEqual() assertion can be used just like equal() when comparing the value of
+    * objects, such that { key: value } is equal to { key: value }. For non-scalar values,
+    * identity will be disregarded by deepEqual.
+    *
+    * @param actual Object or Expression being tested
+    * @param expected Known comparison value
+    * @param message A short description of the assertion
+    */
+    deepEqual(actual: any, expected: any, message?: string): any;
+
+    /**
+    * A non-strict comparison assertion, roughly equivalent to JUnit assertEquals.
+    *
+    * The equal assertion uses the simple comparison operator (==) to compare the actual
+    * and expected arguments. When they are equal, the assertion passes: any; otherwise, it fails.
+    * When it fails, both actual and expected values are displayed in the test result,
+    * in addition to a given message.
+    *
+    * @param actual Expression being tested
+    * @param expected Known comparison value
+    * @param message A short description of the assertion
+    */
+    equal(actual: any, expected: any, message?: string): any;
+
+    /**
+    * Specify how many assertions are expected to run within a test.
+    *
+    * To ensure that an explicit number of assertions are run within any test, use
+    * expect( number ) to register an expected count. If the number of assertions
+    * run does not match the expected count, the test will fail.
+    *
+    * @param amount Number of assertions in this test.
+    */
+    expect(amount: number): any;
+
+    /**
+    * An inverted deep recursive comparison assertion, working on primitive types,
+    * arrays, objects, regular expressions, dates and functions.
+    *
+    * The notDeepEqual() assertion can be used just like equal() when comparing the
+    * value of objects, such that { key: value } is equal to { key: value }. For non-scalar
+    * values, identity will be disregarded by notDeepEqual.
+    *
+    * @param actual Object or Expression being tested
+    * @param expected Known comparison value
+    * @param message A short description of the assertion
+    */
+    notDeepEqual(actual: any, expected: any, message?: string): any;
+
+    /**
+    * A non-strict comparison assertion, checking for inequality.
+    *
+    * The notEqual assertion uses the simple inverted comparison operator (!=) to compare
+    * the actual and expected arguments. When they aren't equal, the assertion passes: any;
+    * otherwise, it fails. When it fails, both actual and expected values are displayed
+    * in the test result, in addition to a given message.
+    *
+    * @param actual Expression being tested
+    * @param expected Known comparison value
+    * @param message A short description of the assertion
+    */
+    notEqual(actual: any, expected: any, message?: string): any;
+
+    notPropEqual(actual: any, expected: any, message?: string): any;
+
+    propEqual(actual: any, expected: any, message?: string): any;
+
+    /**
+    * A non-strict comparison assertion, checking for inequality.
+    *
+    * The notStrictEqual assertion uses the strict inverted comparison operator (!==)
+    * to compare the actual and expected arguments. When they aren't equal, the assertion
+    * passes: any; otherwise, it fails. When it fails, both actual and expected values are
+    * displayed in the test result, in addition to a given message.
+    *
+    * @param actual Expression being tested
+    * @param expected Known comparison value
+    * @param message A short description of the assertion
+    */
+    notStrictEqual(actual: any, expected: any, message?: string): any;
+
+    /**
+    * A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue().
+    * Passes if the first argument is truthy.
+    *
+    * The most basic assertion in QUnit, ok() requires just one argument. If the argument
+    * evaluates to true, the assertion passes; otherwise, it fails. If a second message
+    * argument is provided, it will be displayed in place of the result.
+    *
+    * @param state Expression being tested
+    * @param message A short description of the assertion
+    */
+    ok(state: any, message?: string): any;
+
+    /**
+    * A strict type and value comparison assertion.
+    *
+    * The strictEqual() assertion provides the most rigid comparison of type and value with
+    * the strict equality operator (===)
+    *
+    * @param actual Expression being tested
+    * @param expected Known comparison value
+    * @param message A short description of the assertion
+    */
+    strictEqual(actual: any, expected: any, message?: string): any;
+
+    /**
+    * Assertion to test if a callback throws an exception when run.
+    *
+    * When testing code that is expected to throw an exception based on a specific set of
+    * circumstances, use throws() to catch the error object for testing and comparison.
+    *
+    * @param block Function to execute
+    * @param expected Error Object to compare
+    * @param message A short description of the assertion
+    */
+    throws(block: () => any, expected: any, message?: string): any;
+
+    /**
+    * @param block Function to execute
+    * @param message A short description of the assertion
+    */
+    throws(block: () => any, message?: string): any;
+
+    /**
+    * Alias of throws.
+    *
+    * In very few environments, like Closure Compiler, throws is considered a reserved word
+    * and will cause an error. For that case, an alias is bundled called raises. It has the
+    * same signature and behaviour, just a different name.
+    *
+    * @param block Function to execute
+    * @param expected Error Object to compare
+    * @param message A short description of the assertion
+    */
+    raises(block: () => any, expected: any, message?: string): any;
+
+    /**
+    * Alias of throws.
+    *
+    * In very few environments, like Closure Compiler, throws is considered a reserved word
+    * and will cause an error. For that case, an alias is bundled called raises. It has the
+    * same signature and behaviour, just a different name.
+    *
+    * @param block Function to execute
+    * @param message A short description of the assertion
+    */
+    raises(block: () => any, message?: string): any;
+}
+
+interface QUnitStatic extends QUnitAssert {
+    /* ASYNC CONTROL */
+
+    /**
+    * Start running tests again after the testrunner was stopped. See stop().
+    *
+    * When your async test has multiple exit points, call start() for the corresponding number of stop() increments.
+    *
+    * @param decrement Optional argument to merge multiple start() calls into one. Use with multiple corrsponding stop() calls.
+    */
+    start(decrement?: number): any;
+
+    /**
+    * Stop the testrunner to wait for async tests to run. Call start() to continue.
+    *
+    * When your async test has multiple exit points, call stop() with the increment argument, corresponding to the number of start() calls you need.
+    *
+    * On Blackberry 5.0, window.stop is a native read-only function. If you deal with that browser, use QUnit.stop() instead, which will work anywhere.
+    *
+    * @param decrement Optional argument to merge multiple stop() calls into one. Use with multiple corrsponding start() calls.
+    */
+    stop(increment?: number): any;
+
+    /* CALLBACKS */
+
+    /**
+    * Register a callback to fire whenever the test suite begins.
+    *
+    * QUnit.begin() is called once before running any tests. (a better would've been QUnit.start,
+    * but thats already in use elsewhere and can't be changed.)
+    *
+    * @param callback Callback to execute
+    */
+    begin(callback: () => any): any;
+
+    /**
+    * Register a callback to fire whenever the test suite ends.
+    *
+    * @param callback Callback to execute.
+    */
+    done(callback: (details: DoneCallbackObject) => any): any;
+
+    /**
+    * Register a callback to fire whenever an assertion completes.
+    *
+    * This is one of several callbacks QUnit provides. Its intended for integration scenarios like
+    * PhantomJS or Jenkins. The properties of the details argument are listed below as options.
+    *
+    * @param callback Callback to execute.
+    */
+    log(callback: (details: LogCallbackObject) => any): any;
+
+    /**
+    * Register a callback to fire whenever a module ends.
+    *
+    * @param callback Callback to execute.
+    */
+    moduleDone(callback: (details: ModuleDoneCallbackObject) => any): any;
+
+    /**
+    * Register a callback to fire whenever a module begins.
+    *
+    * @param callback Callback to execute.
+    */
+    moduleStart(callback: (details: ModuleStartCallbackObject) => any): any;
+
+    /**
+    * Register a callback to fire whenever a test ends.
+    *
+    * @param callback Callback to execute.
+    */
+    testDone(callback: (details: TestDoneCallbackObject) => any): any;
+
+    /**
+    * Register a callback to fire whenever a test begins.
+    *
+    * @param callback Callback to execute.
+    */
+    testStart(callback: (details: TestStartCallbackObject) => any): any;
+
+    /* CONFIGURATION */
+
+    /**
+    * QUnit has a bunch of internal configuration defaults, some of which are
+    * useful to override. Check the description for each option for details.
+    */
+    config: Config;
+
+    /* TEST */
+
+    /**
+    * Add an asynchronous test to run. The test must include a call to start().
+    *
+    * For testing asynchronous code, asyncTest will automatically stop the test runner
+    * and wait for your code to call start() to continue.
+    *
+    * @param name Title of unit being tested
+    * @param expected Number of assertions in this test
+    * @param test Function to close over assertions
+    */
+    asyncTest(name: string, expected: number, test: (assert: QUnitAssert) => any): any;
+
+    /**
+    * Add an asynchronous test to run. The test must include a call to start().
+    *
+    * For testing asynchronous code, asyncTest will automatically stop the test runner
+    * and wait for your code to call start() to continue.
+    *
+    * @param name Title of unit being tested
+    * @param test Function to close over assertions
+    */
+    asyncTest(name: string, test: (assert: QUnitAssert) => any): any;
+
+    /**
+    * Specify how many assertions are expected to run within a test.
+    *
+    * To ensure that an explicit number of assertions are run within any test, use
+    * expect( number ) to register an expected count. If the number of assertions
+    * run does not match the expected count, the test will fail.
+    *
+    * @param amount Number of assertions in this test.
+    * @depricated since version 1.16
+    */
+    expect(amount: number): any;
+
+    /**
+    * Group related tests under a single label.
+    *
+    * All tests that occur after a call to module() will be grouped into that module.
+    * The test names will all be preceded by the module name in the test results.
+    * You can then use that module name to select tests to run.
+    *
+    * @param name Label for this group of tests
+    * @param lifecycle Callbacks to run before and after each test
+    */
+    module(name: string, lifecycle?: LifecycleObject): any;
+
+    /**
+    * Add a test to run.
+    *
+    * When testing the most common, synchronous code, use test().
+    * The assert argument to the callback contains all of QUnit's assertion methods.
+    * If you are avoiding using any of QUnit's globals, you can use the assert
+    * argument instead.
+    *
+    * @param title Title of unit being tested
+    * @param expected Number of assertions in this test
+    * @param test Function to close over assertions
+    */
+    test(title: string, expected: number, test: (assert: QUnitAssert) => any): any;
+
+    /**
+    * @param title Title of unit being tested
+    * @param test Function to close over assertions
+    */
+    test(title: string, test: (assert: QUnitAssert) => any): any;
+
+    /**
+    * https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L1568
+    */
+    equiv(a: any, b: any): any;
+
+    /**
+    * https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L897
+    */
+    push(result: any, actual: any, expected: any, message: string): any;
+
+    /**
+    * https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L839
+    */
+    reset(): any;
+}
+
+/* ASSERT */
+
+/**
+* A deep recursive comparison assertion, working on primitive types, arrays, objects,
+* regular expressions, dates and functions.
+*
+* The deepEqual() assertion can be used just like equal() when comparing the value of
+* objects, such that { key: value } is equal to { key: value }. For non-scalar values,
+* identity will be disregarded by deepEqual.
+*
+* @param actual Object or Expression being tested
+* @param expected Known comparison value
+* @param message A short description of the assertion
+*/
+declare function deepEqual(actual: any, expected: any, message?: string): any;
+
+/**
+* A non-strict comparison assertion, roughly equivalent to JUnit assertEquals.
+*
+* The equal assertion uses the simple comparison operator (==) to compare the actual
+* and expected arguments. When they are equal, the assertion passes: any; otherwise, it fails.
+* When it fails, both actual and expected values are displayed in the test result,
+* in addition to a given message.
+*
+* @param actual Expression being tested
+* @param expected Known comparison value
+* @param message A short description of the assertion
+*/
+declare function equal(actual: any, expected: any, message?: string): any;
+
+/**
+* An inverted deep recursive comparison assertion, working on primitive types,
+* arrays, objects, regular expressions, dates and functions.
+*
+* The notDeepEqual() assertion can be used just like equal() when comparing the
+* value of objects, such that { key: value } is equal to { key: value }. For non-scalar
+* values, identity will be disregarded by notDeepEqual.
+*
+* @param actual Object or Expression being tested
+* @param expected Known comparison value
+* @param message A short description of the assertion
+*/
+declare function notDeepEqual(actual: any, expected: any, message?: string): any;
+
+/**
+* A non-strict comparison assertion, checking for inequality.
+*
+* The notEqual assertion uses the simple inverted comparison operator (!=) to compare
+* the actual and expected arguments. When they aren't equal, the assertion passes;
+* otherwise, it fails. When it fails, both actual and expected values are displayed
+* in the test result, in addition to a given message.
+*
+* @param actual Expression being tested
+* @param expected Known comparison value
+* @param message A short description of the assertion
+*/
+declare function notEqual(actual: any, expected: any, message?: string): any;
+
+/**
+* A non-strict comparison assertion, checking for inequality.
+*
+* The notStrictEqual assertion uses the strict inverted comparison operator (!==)
+* to compare the actual and expected arguments. When they aren't equal, the assertion
+* passes; otherwise, it fails. When it fails, both actual and expected values are
+* displayed in the test result, in addition to a given message.
+*
+* @param actual Expression being tested
+* @param expected Known comparison value
+* @param message A short description of the assertion
+*/
+declare function notStrictEqual(actual: any, expected: any, message?: string): any;
+
+/**
+* A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue().
+* Passes if the first argument is truthy.
+*
+* The most basic assertion in QUnit, ok() requires just one argument. If the argument
+* evaluates to true, the assertion passes; otherwise, it fails. If a second message
+* argument is provided, it will be displayed in place of the result.
+*
+* @param state Expression being tested
+* @param message A short description of the assertion
+*/
+declare function ok(state: any, message?: string): any;
+
+/**
+* A strict type and value comparison assertion.
+*
+* The strictEqual() assertion provides the most rigid comparison of type and value with
+* the strict equality operator (===)
+*
+* @param actual Expression being tested
+* @param expected Known comparison value
+* @param message A short description of the assertion
+*/
+declare function strictEqual(actual: any, expected: any, message?: string): any;
+
+/**
+* Assertion to test if a callback throws an exception when run.
+*
+* When testing code that is expected to throw an exception based on a specific set of
+* circumstances, use throws() to catch the error object for testing and comparison.
+*
+* @param block Function to execute
+* @param expected Error Object to compare
+* @param message A short description of the assertion
+*/
+declare function throws(block: () => any, expected: any, message?: string): any;
+
+/**
+* @param block Function to execute
+* @param message A short description of the assertion
+*/
+declare function throws(block: () => any, message?: string): any;
+
+/* ASYNC CONTROL */
+
+/**
+* Start running tests again after the testrunner was stopped. See stop().
+*
+* When your async test has multiple exit points, call start() for the corresponding number of stop() increments.
+*
+* @param decrement Optional argument to merge multiple start() calls into one. Use with multiple corrsponding stop() calls.
+*/
+declare function start(decrement?: number): any;
+
+/**
+* Stop the testrunner to wait for async tests to run. Call start() to continue.
+*
+* When your async test has multiple exit points, call stop() with the increment argument, corresponding to the number of start() calls you need.
+*
+* On Blackberry 5.0, window.stop is a native read-only function. If you deal with that browser, use QUnit.stop() instead, which will work anywhere.
+*
+* @param decrement Optional argument to merge multiple stop() calls into one. Use with multiple corrsponding start() calls.
+*/
+declare function stop(increment?: number): any;
+
+/* CALLBACKS */
+
+/**
+* Register a callback to fire whenever the test suite begins.
+*
+* QUnit.begin() is called once before running any tests. (a better would've been QUnit.start,
+* but thats already in use elsewhere and can't be changed.)
+*
+* @param callback Callback to execute
+*/
+declare function begin(callback: () => any): any;
+
+/**
+* Register a callback to fire whenever the test suite ends.
+*
+* @param callback Callback to execute.
+*/
+declare function done(callback: (details: DoneCallbackObject) => any): any;
+
+/**
+* Register a callback to fire whenever an assertion completes.
+*
+* This is one of several callbacks QUnit provides. Its intended for integration scenarios like
+* PhantomJS or Jenkins. The properties of the details argument are listed below as options.
+*
+* @param callback Callback to execute.
+*/
+declare function log(callback: (details: LogCallbackObject) => any): any;
+
+/**
+* Register a callback to fire whenever a module ends.
+*
+* @param callback Callback to execute.
+*/
+declare function moduleDone(callback: (details: ModuleDoneCallbackObject) => any): any;
+
+/**
+* Register a callback to fire whenever a module begins.
+*
+* @param callback Callback to execute.
+*/
+declare function moduleStart(callback: (name: string) => any): any;
+
+/**
+* Register a callback to fire whenever a test ends.
+*
+* @param callback Callback to execute.
+*/
+declare function testDone(callback: (details: TestDoneCallbackObject) => any): any;
+
+/**
+* Register a callback to fire whenever a test begins.
+*
+* @param callback Callback to execute.
+*/
+declare function testStart(callback: (details: TestStartCallbackObject) => any): any;
+
+/* TEST */
+
+/**
+* Add an asynchronous test to run. The test must include a call to start().
+*
+* For testing asynchronous code, asyncTest will automatically stop the test runner
+* and wait for your code to call start() to continue.
+*
+* @param name Title of unit being tested
+* @param expected Number of assertions in this test
+* @param test Function to close over assertions
+*/
+declare function asyncTest(name: string, expected?: any, test?: (assert: QUnitAssert) => any): any;
+
+/**
+* Add an asynchronous test to run. The test must include a call to start().
+*
+* For testing asynchronous code, asyncTest will automatically stop the test runner
+* and wait for your code to call start() to continue.
+*
+* @param name Title of unit being tested
+* @param test Function to close over assertions
+*/
+declare function asyncTest(name: string, test: (assert: QUnitAssert) => any): any;
+
+/**
+* Specify how many assertions are expected to run within a test.
+*
+* To ensure that an explicit number of assertions are run within any test, use
+* expect( number ) to register an expected count. If the number of assertions
+* run does not match the expected count, the test will fail.
+*
+* @param amount Number of assertions in this test.
+* @depricated since version 1.16
+*/
+declare function expect(amount: number): any;
+
+// ** conflict with TypeScript module keyword. Must be used on QUnit namespace
+//declare var module: (name: string, lifecycle?: LifecycleObject) => any;
+
+/**
+* Add a test to run.
+*
+* When testing the most common, synchronous code, use test().
+* The assert argument to the callback contains all of QUnit's assertion methods.
+* If you are avoiding using any of QUnit's globals, you can use the assert
+* argument instead.
+*
+* @param title Title of unit being tested
+* @param expected Number of assertions in this test
+* @param test Function to close over assertions
+*/
+declare function test(title: string, expected: number, test: (assert?: QUnitAssert) => any): any;
+
+/**
+* @param title Title of unit being tested
+* @param test Function to close over assertions
+*/
+declare function test(title: string, test: (assert?: QUnitAssert) => any): any;
+
+declare function notPropEqual(actual: any, expected: any, message?: string): any;
+
+declare function propEqual(actual: any, expected: any, message?: string): any;
+
+// https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L1568
+declare function equiv(a: any, b: any): any;
+
+// https://github.com/jquery/qunit/blob/master/qunit/qunit.js#L661
+declare var raises: any;
+
+/* QUNIT */
+declare var QUnit: QUnitStatic;interface ISortable {
 	destroy(): void;
 	option(name: string, value?: any): any;
 }
@@ -865,7 +1665,8 @@ interface SortableStatic {
     create(el: HTMLElement | Node, options?: SortableOptions): ISortable;
 }
 
-declare var Sortable: SortableStatic;interface String {
+declare var Sortable: SortableStatic;/* tslint:disable:interface-name */
+interface String {
     asDataUri(): string;
     contains(str: string): boolean;
     endsWith(suffix: string): boolean;
@@ -875,6 +1676,7 @@ declare var Sortable: SortableStatic;interface String {
     startsWith(prefix: string): boolean;
     trimEnd(c: string): string;
     trimStart(c: string): string;
+    localeFormat(format: string, useDefault: boolean): string;
 }
 
 interface Date {
@@ -929,8 +1731,8 @@ interface BigNumber {
 
 declare var BigNumber: {
     new (number: number | string): BigNumber;
-}
-declare var unwrap: <TNode extends Node>(node: TNode) => TNode;
+};
+/* tslint:enable:interface-name */declare var unwrap: <TNode extends Node>(node: TNode) => TNode;
 
 interface Node {
     /**
@@ -4392,17 +5194,17 @@ declare module Promise {
      */
 	function race<R>(promises: Promise<R>[]): Promise<R>;
 }
-declare module Vidyano {
+declare namespace Vidyano {
     class CultureInfo {
         name: string;
-        numberFormat: CultureInfoNumberFormat;
-        dateFormat: CultureInfoDateFormat;
+        numberFormat: ICultureInfoNumberFormat;
+        dateFormat: ICultureInfoDateFormat;
         static currentCulture: CultureInfo;
         static invariantCulture: CultureInfo;
         static cultures: linqjs.Dictionary<string, CultureInfo>;
-        constructor(name: string, numberFormat: CultureInfoNumberFormat, dateFormat: CultureInfoDateFormat);
+        constructor(name: string, numberFormat: ICultureInfoNumberFormat, dateFormat: ICultureInfoDateFormat);
     }
-    interface CultureInfoNumberFormat {
+    interface ICultureInfoNumberFormat {
         naNSymbol: string;
         negativeSign: string;
         positiveSign: string;
@@ -4427,7 +5229,7 @@ declare module Vidyano {
         numberDecimalSeparator: string;
         numberGroupSeparator: string;
     }
-    interface CultureInfoDateFormat {
+    interface ICultureInfoDateFormat {
         amDesignator: string;
         pmDesignator: string;
         dateSeparator: string;
@@ -4449,32 +5251,32 @@ declare module Vidyano {
         shortMonthNames: Array<string>;
     }
 }
-declare var unescape: any;
-declare var Windows: any;
-interface Set<T> {
-    add(value: T): Set<T>;
+declare const unescape: any;
+declare const Windows: any;
+interface ISet<T> {
+    add(value: T): ISet<T>;
     clear(): void;
     delete(value: T): boolean;
     entries(): Array<[T, T]>;
-    forEach(callbackfn: (value: T, index: T, set: Set<T>) => void, thisArg?: any): void;
+    forEach(callbackfn: (value: T, index: T, set: ISet<T>) => void, thisArg?: any): void;
     has(value: T): boolean;
     keys(): Array<T>;
     size: number;
 }
-interface SetConstructor {
-    new <T>(): Set<T>;
-    prototype: Set<any>;
+interface ISetConstructor {
+    new <T>(): ISet<T>;
+    prototype: ISet<any>;
 }
-declare var Set: SetConstructor;
-declare module Vidyano {
-    var version: string;
+declare const Set: ISetConstructor;
+declare namespace Vidyano {
+    const version: string;
     enum NotificationType {
         Error = 0,
         Notice = 1,
         OK = 2,
         Warning = 3,
     }
-    interface Language {
+    interface ILanguage {
         culture: string;
         name: string;
         isDefault: boolean;
@@ -4482,14 +5284,14 @@ declare module Vidyano {
             [key: string]: string;
         };
     }
-    interface ProviderParameters {
+    interface IProviderParameters {
         label: string;
         description: string;
         requestUri: string;
         signOutUri: string;
         redirectUri: string;
     }
-    interface Routes {
+    interface IRoutes {
         programUnits: {
             [name: string]: string;
         };
@@ -4510,12 +5312,12 @@ declare module Vidyano {
         expires?: number | Date;
     }): any;
     function _debounce(func: Function, wait: number, immediate?: boolean): Function;
-    module Common {
-        interface KeyValuePair {
+    namespace Common {
+        interface IKeyValuePair {
             key: any;
             value: string;
         }
-        interface SubjectNotifier<TSource, TDetail> {
+        interface ISubjectNotifier<TSource, TDetail> {
             notify: (source: TSource, detail?: TDetail) => void;
         }
         class PropertyChangedArgs {
@@ -4524,16 +5326,16 @@ declare module Vidyano {
             oldValue: any;
             constructor(propertyName: string, newValue: any, oldValue: any);
         }
-        interface SubjectDisposer {
+        interface ISubjectDisposer {
             (): void;
         }
         class Subject<TSource, TDetail> {
             private _observers;
-            constructor(notifier: SubjectNotifier<TSource, TDetail>);
-            attach(observer: SubjectObserver<TSource, TDetail>): SubjectDisposer;
+            constructor(notifier: ISubjectNotifier<TSource, TDetail>);
+            attach(observer: ISubjectObserver<TSource, TDetail>): ISubjectDisposer;
             private _detach(observerId);
         }
-        interface SubjectObserver<TSource, TDetail> {
+        interface ISubjectObserver<TSource, TDetail> {
             (sender: TSource, detail: TDetail): void;
         }
         class Observable<T> {
@@ -4542,24 +5344,24 @@ declare module Vidyano {
             constructor();
             protected notifyPropertyChanged(propertyName: string, newValue: any, oldValue?: any): void;
         }
-        interface PropertyChangedObserver<T> extends SubjectObserver<T, Vidyano.Common.PropertyChangedArgs> {
+        interface IPropertyChangedObserver<T> extends ISubjectObserver<T, Vidyano.Common.PropertyChangedArgs> {
         }
     }
-    module ClientOperations {
-        interface ClientOperation {
+    namespace ClientOperations {
+        interface IClientOperation {
             type: string;
         }
-        interface RefreshOperation extends ClientOperation {
+        interface IRefreshOperation extends IClientOperation {
             delay?: number;
             queryId?: string;
             fullTypeName?: string;
             objectId?: string;
         }
-        interface ExecuteMethodOperation extends ClientOperation {
+        interface IExecuteMethodOperation extends IClientOperation {
             name: string;
             arguments: any[];
         }
-        interface OpenOperation extends ClientOperation {
+        interface IOpenOperation extends IClientOperation {
             persistentObject: any;
             replace?: boolean;
         }
@@ -4567,7 +5369,7 @@ declare module Vidyano {
         function reloadPage(): void;
         function showMessageBox(hooks: ServiceHooks, title: string, message: string, html?: boolean, delay?: number): void;
     }
-    interface ServiceClientData {
+    interface IServiceClientData {
         defaultUser: string;
         exception: string;
         languages: {
@@ -4581,14 +5383,57 @@ declare module Vidyano {
         };
         providers: {
             [name: string]: {
-                parameters: ProviderParameters;
+                parameters: IProviderParameters;
             };
         };
+    }
+    interface IServiceRequest {
+        when: Date;
+        profiler: IServiceRequestProfiler;
+        transport: number;
+        method: string;
+        request: any;
+        response: any;
+    }
+    interface IServiceRequestProfiler {
+        taskId: number;
+        elapsedMilliseconds: number;
+        entries: IServiceRequestProfilerEntry[];
+        sql: IServiceRequestProfilerSQL[];
+        exceptions: {
+            id: string;
+            message: string;
+        }[];
+    }
+    interface IServiceRequestProfilerEntry {
+        entries: IServiceRequestProfilerEntry[];
+        methodName: string;
+        sql: string[];
+        started: number;
+        elapsedMilliseconds: number;
+        hasNPlusOne?: boolean;
+        exception: string;
+        arguments: any[];
+    }
+    interface IServiceRequestProfilerSQL {
+        commandId: string;
+        commandText: string;
+        elapsedMilliseconds: number;
+        recordsAffected: number;
+        taskId: number;
+        type: string;
+        parameters: IServiceRequestProfilerSQLParameter[];
+    }
+    interface IServiceRequestProfilerSQLParameter {
+        name: string;
+        type: string;
+        value: string;
     }
     class Service extends Vidyano.Common.Observable<Service> {
         serviceUri: string;
         hooks: ServiceHooks;
         private _forceUser;
+        private static _getMs;
         private static _base64KeyStr;
         private _lastAuthTokenUpdate;
         private _isUsingDefaultCredentials;
@@ -4599,6 +5444,8 @@ declare module Vidyano {
         private _providers;
         private _isSignedIn;
         private _application;
+        private _profile;
+        private _profiledRequests;
         staySignedIn: boolean;
         icons: linqjs.Dictionary<string, string>;
         actionDefinitions: linqjs.Dictionary<string, ActionDefinition>;
@@ -4608,20 +5455,22 @@ declare module Vidyano {
         constructor(serviceUri: string, hooks?: ServiceHooks, _forceUser?: string);
         private _createUri(method);
         private _createData(method, data?);
+        private _getMs();
         private _postJSON(url, data);
+        private _postJSONProcess(data, result, requestMethod, createdRequest, requestStart, elapsedMs);
         private _getJSON(url);
         private static _decodeBase64(input);
         private static _getServiceTimeString;
         _getStream(obj: PersistentObject, action?: string, parent?: PersistentObject, query?: Query, selectedItems?: Array<QueryResultItem>, parameters?: any): void;
         application: Application;
         private _setApplication(application);
-        language: Language;
+        language: ILanguage;
         isSignedIn: boolean;
         private _setIsSignedIn(val);
-        languages: Language[];
+        languages: ILanguage[];
         windowsAuthentication: boolean;
         providers: {
-            [name: string]: ProviderParameters;
+            [name: string]: IProviderParameters;
         };
         isUsingDefaultCredentials: boolean;
         private _setIsUsingDefaultCredentials(val);
@@ -4629,6 +5478,9 @@ declare module Vidyano {
         private _setUserName(val);
         defaultUserName: string;
         private authToken;
+        profile: boolean;
+        profiledRequests: IServiceRequest[];
+        private _setProfiledRequests(requests);
         getTranslatedMessage(key: string, ...params: string[]): string;
         initialize(skipDefaultCredentialLogin?: boolean): Promise<Application>;
         signInExternal(providerName: string): void;
@@ -4653,7 +5505,8 @@ declare module Vidyano {
         service: Vidyano.Service;
         createData(data: any): void;
         setNotification(notification: string, type: NotificationType): void;
-        onInitialize(clientData: ServiceClientData): void;
+        trackEvent(name: string, option: string, owner: ServiceObjectWithActions): void;
+        onInitialize(clientData: IServiceClientData): void;
         onSessionExpired(): void;
         onActionConfirmation(action: Action, option: number): Promise<boolean>;
         onAction(args: ExecuteActionArgs): Promise<any>;
@@ -4674,10 +5527,10 @@ declare module Vidyano {
         onMessageDialog(title: string, message: string, html: boolean, ...actions: string[]): Promise<number>;
         onSelectReference(query: Vidyano.Query): Promise<QueryResultItem[]>;
         onNavigate(path: string, replaceCurrent?: boolean): void;
-        onClientOperation(operation: ClientOperations.ClientOperation): void;
-        onSelectedItemsActions(query: Query, selectedItems: QueryResultItem[], action: SelectedItemsActionArgs): void;
+        onClientOperation(operation: ClientOperations.IClientOperation): void;
+        onSelectedItemsActions(query: Query, selectedItems: QueryResultItem[], action: ISelectedItemsActionArgs): void;
     }
-    interface SelectedItemsActionArgs {
+    interface ISelectedItemsActionArgs {
         name: string;
         isVisible: boolean;
         canExecute: boolean;
@@ -4696,7 +5549,7 @@ declare module Vidyano {
         constructor(service: Service, action: string, persistentObject: PersistentObject, query: Query, selectedItems: Array<QueryResultItem>, parameters: any);
         executeServiceRequest(): Promise<PersistentObject>;
     }
-    interface ServiceObjectPropertyChangedObserver extends Common.PropertyChangedObserver<ServiceObject> {
+    interface IServiceObjectPropertyChangedObserver extends Common.IPropertyChangedObserver<ServiceObject> {
     }
     class ServiceObject extends Vidyano.Common.Observable<ServiceObject> {
         service: Service;
@@ -4734,6 +5587,7 @@ declare module Vidyano {
         private _type;
         private _breadcrumb;
         private _isDeleted;
+        private _tabs;
         fullTypeName: string;
         label: string;
         objectId: string;
@@ -4752,15 +5606,7 @@ declare module Vidyano {
         bulkObjectIds: string;
         queriesToRefresh: Array<string>;
         attributes: PersistentObjectAttribute[];
-        attributesByName: {
-            [key: string]: PersistentObjectAttribute;
-        };
-        private _tabs;
-        private _serviceTabs;
         queries: Query[];
-        queriesByName: {
-            [key: string]: Query;
-        };
         constructor(service: Service, po: any);
         private _createPersistentObjectAttribute(attr);
         id: string;
@@ -4813,7 +5659,7 @@ declare module Vidyano {
         id: string;
         name: string;
         label: string;
-        options: string[] | Common.KeyValuePair[];
+        options: string[] | Common.IKeyValuePair[];
         offset: number;
         type: string;
         toolTip: string;
@@ -4921,11 +5767,11 @@ declare module Vidyano {
         Ascending = 1,
         Descending = 2,
     }
-    interface SortOption {
+    interface ISortOption {
         column: QueryColumn;
         direction: SortDirection;
     }
-    interface QuerySelectAll {
+    interface IQuerySelectAll {
         isAvailable: boolean;
         allSelected: boolean;
         inverse: boolean;
@@ -4948,8 +5794,8 @@ declare module Vidyano {
         private _defaultChartName;
         private _currentChart;
         private _lastUpdated;
-        private _isReorderable;
         private _totalItem;
+        private _isSystem;
         persistentObject: PersistentObject;
         columns: QueryColumn[];
         id: string;
@@ -4975,10 +5821,12 @@ declare module Vidyano {
                 end: number;
             }[];
         };
-        selectAll: QuerySelectAll;
+        selectAll: IQuerySelectAll;
         constructor(service: Service, query: any, parent?: PersistentObject, asLookup?: boolean, maxSelectedItems?: number);
+        isSystem: boolean;
         filters: QueryFilters;
         canFilter: boolean;
+        private _setCanFilter(val);
         canRead: boolean;
         canReorder: boolean;
         charts: linqjs.Enumerable<QueryChart>;
@@ -4993,7 +5841,7 @@ declare module Vidyano {
         asLookup: boolean;
         totalItems: number;
         labelWithTotalItems: string;
-        sortOptions: SortOption[];
+        sortOptions: ISortOption[];
         totalItem: QueryResultItem;
         private _setTotalItem(item);
         reorder(before: QueryResultItem, item: QueryResultItem, after: QueryResultItem): Promise<QueryResultItem[]>;
@@ -5010,6 +5858,36 @@ declare module Vidyano {
         private _updateItems(items, reset?);
         private _notifyItemSelectionChanged(item);
         private _updateSelectAll(item?, selectedItems?);
+        static FromJsonData(service: Service, data: IJsonQueryData): Query;
+    }
+    interface IJsonQueryData {
+        id?: string;
+        name?: string;
+        label?: string;
+        singularLabel?: string;
+        items: {
+            id: string | number;
+            breadcrumb?: string;
+            typeHints?: {
+                [name: string]: string;
+            };
+            values: {
+                key: string;
+                value: string;
+                typeHints?: {
+                    [name: string]: string;
+                };
+            }[];
+        }[];
+        columns: {
+            name: string;
+            label: string;
+            type: string;
+            width?: string;
+            typeHints?: {
+                [name: string]: string;
+            };
+        }[];
     }
     class QueryColumn extends ServiceObject {
         query: Query;
@@ -5041,17 +5919,17 @@ declare module Vidyano {
         sortDirection: SortDirection;
         selectedDistincts: linqjs.Enumerable<string>;
         selectedDistinctsInversed: boolean;
-        distincts: QueryColumnDistincts;
+        distincts: IQueryColumnDistincts;
         total: QueryResultItemValue;
         private _setTotal(total);
         private _setSortDirection(direction);
         _toServiceObject(): any;
         getTypeHint(name: string, defaultValue?: string, typeHints?: any, ignoreCasing?: boolean): string;
-        refreshDistincts(): Promise<QueryColumnDistincts>;
+        refreshDistincts(): Promise<IQueryColumnDistincts>;
         sort(direction: SortDirection, multiSort?: boolean): Promise<QueryResultItem[]>;
         private _queryPropertyChanged(sender, args);
     }
-    interface QueryColumnDistincts {
+    interface IQueryColumnDistincts {
         matching: string[];
         remaining: string[];
         isDirty: boolean;
@@ -5100,7 +5978,6 @@ declare module Vidyano {
         filters: QueryFilter[];
         private _setFilters(filters);
         currentFilter: QueryFilter;
-        private _getFilterPersistentObject(name);
         private _computeFilters(setDefaultFilter?);
         private _computeFilterData();
         getFilter(name: string): QueryFilter;
@@ -5110,7 +5987,6 @@ declare module Vidyano {
     }
     class QueryFilter extends Vidyano.Common.Observable<QueryFilter> {
         private _po;
-        private _name;
         constructor(_po: PersistentObject);
         name: string;
         isLocked: boolean;
@@ -5136,7 +6012,6 @@ declare module Vidyano {
         definition: ActionDefinition;
         owner: ServiceObjectWithActions;
         private _targetType;
-        private _target;
         private _query;
         private _parent;
         private _isVisible;
@@ -5170,7 +6045,7 @@ declare module Vidyano {
         static get(service: Service, name: string, owner: ServiceObjectWithActions): Action;
         static addActions(service: Service, owner: ServiceObjectWithActions, actions: Action[], actionNames: string[]): void;
     }
-    module Actions {
+    namespace Actions {
         class RefreshQuery extends Action {
             constructor(service: Service, definition: ActionDefinition, owner: ServiceObjectWithActions);
             _onExecute(option?: number, parameters?: any, selectedItems?: QueryResultItem[]): Promise<any>;
@@ -5246,6 +6121,7 @@ declare module Vidyano {
         private _globalSearchId;
         private _analyticsKey;
         private _userSettings;
+        private _canProfile;
         private _hasManagement;
         private _session;
         private _routes;
@@ -5260,9 +6136,10 @@ declare module Vidyano {
         globalSearchId: string;
         analyticsKey: string;
         userSettings: any;
+        canProfile: boolean;
         hasManagement: boolean;
         session: Vidyano.PersistentObject;
-        routes: Routes;
+        routes: IRoutes;
         poRe: RegExp;
         queryRe: RegExp;
         saveUserSettings(): Promise<any>;
@@ -5280,7 +6157,7 @@ declare module Vidyano {
         offset: number;
         openFirst: boolean;
         items: ProgramUnitItem[];
-        constructor(service: Service, routes: Routes, unit: any);
+        constructor(service: Service, routes: IRoutes, unit: any);
         private _createItem(routes, itemData);
     }
     class ProgramUnitItemGroup extends ProgramUnitItem {
@@ -5289,13 +6166,13 @@ declare module Vidyano {
     }
     class ProgramUnitItemQuery extends ProgramUnitItem {
         queryId: string;
-        constructor(service: Service, routes: Routes, unitItem: any, parent: ProgramUnit);
+        constructor(service: Service, routes: IRoutes, unitItem: any, parent: ProgramUnit);
         private static _getPath(routes, id);
     }
     class ProgramUnitItemPersistentObject extends ProgramUnitItem {
         persistentObjectId: string;
         persistentObjectObjectId: string;
-        constructor(service: Service, routes: Routes, unitItem: any, parent: ProgramUnit);
+        constructor(service: Service, routes: IRoutes, unitItem: any, parent: ProgramUnit);
         private static _getPath(routes, id, objectId);
     }
     class ProgramUnitItemUrl extends ProgramUnitItem {
@@ -5311,7 +6188,7 @@ declare module Vidyano {
         private static _getMessages();
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class ActionBar extends WebComponent {
         accent: boolean;
         serviceObject: Vidyano.ServiceObjectWithActions;
@@ -5330,7 +6207,7 @@ declare module Vidyano.WebComponents {
         private _computeNoActions(pinnedActions, unpinnedActions);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class ActionButton extends WebComponent {
         item: Vidyano.QueryResultItem;
         action: Action;
@@ -5345,8 +6222,8 @@ declare module Vidyano.WebComponents {
         private _setOptions;
         private _setSiblingIcon;
         constructor(item: Vidyano.QueryResultItem, action: Action);
-        private _executeWithoutOptions(e);
-        private _executeWithOption(e);
+        private _onExecuteWithoutOptions(e);
+        private _onExecuteWithOption(e);
         private _execute(option?);
         private _observeAction(canExecute, isVisible, options);
         private _computeDisabled(canExecute);
@@ -5358,7 +6235,7 @@ declare module Vidyano.WebComponents {
         private _computeOpenOnHover(overflow, openOnHover);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class AppConfig extends WebComponent {
         private _defaultAttributeConfig;
         private _persistentObjectConfigs;
@@ -5368,6 +6245,7 @@ declare module Vidyano.WebComponents {
         private _queryConfigs;
         private _queryChartConfigs;
         attached(): void;
+        getSetting(key: string, defaultValue?: string): string;
         getPersistentObjectConfig(persistentObject: Vidyano.PersistentObject): PersistentObjectConfig;
         getAttributeConfig(attr: Vidyano.PersistentObjectAttribute): PersistentObjectAttributeConfig;
         getTabConfig(tab: Vidyano.PersistentObjectTab): PersistentObjectTabConfig;
@@ -5377,7 +6255,13 @@ declare module Vidyano.WebComponents {
         private _getConfigs<T>(type);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
+    class AppSetting extends WebComponent {
+        key: string;
+        value: string;
+    }
+}
+declare namespace Vidyano.WebComponents {
     class PersistentObjectAttributeConfig extends TemplateConfig<Vidyano.PersistentObjectAttribute> {
         private _calculateHeight;
         private _calculateWidth;
@@ -5392,37 +6276,37 @@ declare module Vidyano.WebComponents {
         calculateWidth(attr: Vidyano.PersistentObjectAttribute): number;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectConfig extends TemplateConfig<Vidyano.PersistentObject> {
         id: string;
         objectId: string;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectTabConfig extends TemplateConfig<Vidyano.PersistentObjectTab> {
         name: string;
         type: string;
         objectId: string;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class ProgramUnitConfig extends TemplateConfig<Vidyano.ProgramUnit> {
         name: string;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryChartConfig extends TemplateConfig<Vidyano.QueryChart> {
         type: string;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryConfig extends TemplateConfig<Vidyano.Query> {
         name: string;
         id: string;
         defaultChart: string;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     abstract class TemplateConfig<T> extends WebComponent {
         private _template;
         hasTemplate: boolean;
@@ -5431,10 +6315,13 @@ declare module Vidyano.WebComponents {
         private _setHasTemplate;
         attached(): void;
         stamp(obj: T, as?: string, asModel?: (model: T) => any): DocumentFragment;
-        static register(info?: WebComponentRegistrationInfo): (obj: any) => void;
+        static register(info?: IWebComponentRegistrationInfo): (obj: any) => void;
     }
 }
-declare module Vidyano.WebComponents {
+declare var _gaq: any[];
+declare namespace Vidyano.WebComponents {
+    const hashBang: string;
+    const hashBangRe: RegExp;
     class AppCacheEntry {
         id: string;
         constructor(id: string);
@@ -5486,6 +6373,7 @@ declare module Vidyano.WebComponents {
         private _setKeys;
         private _setProgramUnit;
         private _setCurrentRoute;
+        private _setProfilerLoaded;
         attached(): void;
         configuration: AppConfig;
         initializationError: string;
@@ -5502,8 +6390,9 @@ declare module Vidyano.WebComponents {
         redirectToSignIn(keepUrl?: boolean): void;
         redirectToNotFound(): void;
         redirectToError(message: string, replaceCurrent?: boolean): void;
-        showDialog(dialog: Dialog, options?: DialogOptions): Promise<any>;
-        showMessageDialog(options: MessageDialogOptions): Promise<any>;
+        showDialog(dialog: Dialog, options?: Vidyano.WebComponents.IDialogOptions): Promise<any>;
+        showMessageDialog(options: Vidyano.WebComponents.IMessageDialogOptions): Promise<any>;
+        private _computeIsProfiling(isSignedIn, profile, profilerLoaded);
         private _computeService(uri, user);
         private _onInitialized();
         private _convertPath(application, path);
@@ -5523,6 +6412,9 @@ declare module Vidyano.WebComponents {
     class AppServiceHooks extends Vidyano.ServiceHooks {
         app: App;
         constructor(app: App);
+        private _initializeGoogleAnalytics();
+        trackEvent(action: string, option: string, owner: ServiceObjectWithActions): void;
+        trackPageView(path: string): void;
         onConstructQuery(service: Service, query: any, parent?: Vidyano.PersistentObject, asLookup?: boolean, maxSelectedItems?: number): Vidyano.Query;
         onActionConfirmation(action: Action, option: number): Promise<boolean>;
         onAction(args: ExecuteActionArgs): Promise<any>;
@@ -5532,17 +6424,17 @@ declare module Vidyano.WebComponents {
         onSelectReference(query: Vidyano.Query): Promise<QueryResultItem[]>;
         onSessionExpired(): void;
         onNavigate(path: string, replaceCurrent?: boolean): void;
-        onClientOperation(operation: ClientOperations.ClientOperation): void;
+        onClientOperation(operation: ClientOperations.IClientOperation): void;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class AppRouteError extends WebComponent {
         private _setTitle;
         private _setMessage;
         private _activate(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class AppRoute extends WebComponent {
         route: string;
         component: string;
@@ -5568,14 +6460,14 @@ declare module Vidyano.WebComponents {
         private _componentChanged();
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class AttachedNotifier extends WebComponent {
         private _wasAttached;
         oneTime: boolean;
         attached(): void;
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeAsDetail extends WebComponents.Attributes.PersistentObjectAttribute {
         private _inlineAddHeight;
         private _lastComputedWidths;
@@ -5602,7 +6494,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _scrollNewDetailRowIntoView(serviceObject, columns, editing, isAttached);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeBinaryFile extends WebComponents.Attributes.PersistentObjectAttribute {
         private _inputContainer;
         private _inputAttribute;
@@ -5613,7 +6505,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeFileName(value);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeBoolean extends WebComponents.Attributes.PersistentObjectAttribute {
         protected _valueChanged(newValue: any): void;
     }
@@ -5623,7 +6515,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _notNull(value);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeComboBox extends WebComponents.Attributes.PersistentObjectAttribute {
         comboBoxOptions: string[];
         newValue: string;
@@ -5635,7 +6527,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeCanAdd(newValue, options);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeCommonMark extends PersistentObjectAttribute {
         private _setMarkedElementLoaded;
         constructor();
@@ -5643,7 +6535,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeNotEditing(markedElementLoaded, editing);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeDateTime extends WebComponents.Attributes.PersistentObjectAttribute {
         private _dateInput;
         private _timeInput;
@@ -5677,12 +6569,12 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeCanClear(value, required);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeDropDown extends WebComponents.Attributes.PersistentObjectAttribute {
         protected _valueChanged(newValue: any): void;
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeFlagsEnum extends WebComponents.Attributes.PersistentObjectAttribute {
     }
     class PersistentObjectAttributeFlagsEnumFlag extends WebComponents.WebComponent {
@@ -5690,40 +6582,72 @@ declare module Vidyano.WebComponents.Attributes {
         attribute: Vidyano.PersistentObjectAttribute;
         checked: boolean;
         label: string;
-        option: Vidyano.Common.KeyValuePair;
+        option: Vidyano.Common.IKeyValuePair;
         private _checkedChanged();
         private _computeLabel(option);
         private _valueChanged(value, label);
         private _values(value);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeImage extends WebComponents.Attributes.PersistentObjectAttribute {
         private _pasteListener;
         _attributeChanged(): void;
         detached(): void;
         private _change(e);
         private _clear();
-        private _computeCanClear(value);
+        private _computeHasValue(value);
         private _computeImage(value);
         private _pasteAuto(e);
         private _pasteCreateImage(source);
+        private _showDialog();
+    }
+    class PersistentObjectAttributeImageDialog extends WebComponents.Dialog {
+        label: string;
+        src: string;
+        constructor(label: string, src: string);
+        private _close();
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeKeyValueList extends WebComponents.Attributes.PersistentObjectAttribute {
         protected _valueChanged(newValue: any): void;
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeMultiLineString extends PersistentObjectAttribute {
         maxlength: number;
-        height: string;
         protected _attributeChanged(): void;
         private _editTextAreaBlur();
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
+    class PersistentObjectAttributeMultiStringItems extends Sortable {
+        protected _dragEnd(): void;
+    }
+    class PersistentObjectAttributeMultiStringItem extends WebComponent {
+        private _focusQueued;
+        value: string;
+        isNew: boolean;
+        isReadOnly: boolean;
+        constructor(value: string, isReadOnly?: boolean);
+        attached(): void;
+        queueFocus(): void;
+        private _valueChanged(value);
+        private _onInputBlur();
+    }
+    class PersistentObjectAttributeMultiString extends PersistentObjectAttribute {
+        strings: PersistentObjectAttributeMultiStringItem[];
+        private _setNewString;
+        private _computeStrings(value, readOnly);
+        private _itemValueNew(e, detail);
+        private _itemsOrderChanged();
+        private _itemValueChanged(e);
+        private _getValues();
+        private _render(strings, editing, isAttached);
+    }
+}
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeNumeric extends WebComponents.Attributes.PersistentObjectAttribute {
         private _allowDecimal;
         private _isNullable;
@@ -5741,12 +6665,12 @@ declare module Vidyano.WebComponents.Attributes {
         private _keypress(e);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributePassword extends WebComponents.Attributes.PersistentObjectAttribute {
         private _editInputBlur();
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeReference extends WebComponents.Attributes.PersistentObjectAttribute {
         objectId: string;
         attribute: Vidyano.PersistentObjectAttributeWithReference;
@@ -5769,7 +6693,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeTarget(attribute, href);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeString extends PersistentObjectAttribute {
         private _suggestionsSeparator;
         characterCasing: string;
@@ -5789,15 +6713,15 @@ declare module Vidyano.WebComponents.Attributes {
         private _changeCasing(val);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
-    interface TranslatedString {
+declare namespace Vidyano.WebComponents.Attributes {
+    interface ITranslatedString {
         key: string;
         label: string;
         value: string;
     }
     class PersistentObjectAttributeTranslatedString extends PersistentObjectAttribute {
         private _defaultLanguage;
-        strings: TranslatedString[];
+        strings: ITranslatedString[];
         multiline: boolean;
         private _setStrings;
         protected _optionsChanged(): void;
@@ -5809,14 +6733,14 @@ declare module Vidyano.WebComponents.Attributes {
     }
     class PersistentObjectAttributeTranslatedStringDialog extends Dialog {
         label: string;
-        strings: TranslatedString[];
+        strings: ITranslatedString[];
         multiline: boolean;
         readonly: boolean;
-        constructor(label: string, strings: TranslatedString[], multiline: boolean, readonly: boolean);
+        constructor(label: string, strings: ITranslatedString[], multiline: boolean, readonly: boolean);
         private _ok();
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeUser extends WebComponents.Attributes.PersistentObjectAttribute {
         private _browseReference();
         private _clearReference();
@@ -5826,7 +6750,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeCanBrowseReference(isReadOnly);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttributeEdit extends WebComponent {
         private _setFocus;
         attribute: Vidyano.PersistentObjectAttribute;
@@ -5836,7 +6760,7 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeHasError(validationError);
     }
 }
-declare module Vidyano.WebComponents.Attributes {
+declare namespace Vidyano.WebComponents.Attributes {
     class PersistentObjectAttribute extends WebComponent {
         static typeSynonyms: {
             [key: string]: string[];
@@ -5855,22 +6779,22 @@ declare module Vidyano.WebComponents.Attributes {
         private _computeHasError(validationError);
         private _computeEditing(isEditing, nonEdit);
         private _updateForegroundDataTypeHint(attribute, isEditing, isReadOnly);
-        static register(info?: WebComponentRegistrationInfo): any;
+        static register(info?: IWebComponentRegistrationInfo): any;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Button extends WebComponents.WebComponent {
         private _setCustomLayout;
         attached(): void;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     abstract class Chart extends WebComponent {
         protected static colors: string[];
         chart: Vidyano.QueryChart;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class ChartSelector extends WebComponent {
         query: Vidyano.Query;
         private _computeTypes(charts);
@@ -5878,7 +6802,7 @@ declare module Vidyano.WebComponents {
         private _showChart(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Checkbox extends WebComponents.WebComponent {
         checked: boolean;
         label: string;
@@ -5887,7 +6811,7 @@ declare module Vidyano.WebComponents {
         private _computeIsNull(checked);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class DatePicker extends WebComponent {
         private _today;
         private _daysBody;
@@ -5914,15 +6838,15 @@ declare module Vidyano.WebComponents {
         private _catchClick(e);
     }
 }
-declare module Vidyano.WebComponents {
-    interface DialogOptions {
+declare namespace Vidyano.WebComponents {
+    interface IDialogOptions {
     }
     class DialogInstance {
-        options: DialogOptions;
+        options: IDialogOptions;
         result: Promise<any>;
         private _resolve;
         private _reject;
-        constructor(options: DialogOptions, result: Promise<any>, _resolve: Function, _reject: Function);
+        constructor(options: IDialogOptions, result: Promise<any>, _resolve: Function, _reject: Function);
         resolve(result?: any): void;
         reject(error?: any): void;
     }
@@ -5930,10 +6854,10 @@ declare module Vidyano.WebComponents {
         private _instance;
         private _show(e, details);
         instance: DialogInstance;
-        protected show(options: DialogOptions): void;
+        protected show(options: IDialogOptions): void;
         protected close(result?: any): void;
         protected cancel(result?: any): void;
-        static register(info?: WebComponentRegistrationInfo): any;
+        static register(info?: IWebComponentRegistrationInfo): any;
     }
     class DialogHost extends WebComponent {
         private _dialog;
@@ -5944,14 +6868,14 @@ declare module Vidyano.WebComponents {
         constructor(_dialog: Dialog);
         private _translateChanged();
         private _track(e);
-        show(options?: DialogOptions): Promise<any>;
+        show(options?: IDialogOptions): Promise<any>;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Grid extends WebComponent {
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Icon extends Resource {
         constructor(source?: string);
         protected _contentTarget: Node;
@@ -5959,7 +6883,7 @@ declare module Vidyano.WebComponents {
         static Exists(name: string): boolean;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class InputSearch extends WebComponent {
         value: string;
         focused: boolean;
@@ -5971,7 +6895,7 @@ declare module Vidyano.WebComponents {
         focus(): void;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class MaskedInput extends WebComponent {
         private _maskedInput;
         format: string;
@@ -5979,37 +6903,15 @@ declare module Vidyano.WebComponents {
         readonly: boolean;
         private _initialize(format, separator, isAttached);
         private _readonlyChanged();
-        /**
-         * Resets the text field so just the format is present.
-         */
         resetField(): void;
-        /**
-         * Set the allowed characters that can be used in the mask.
-         * @param a string of characters that can be used.
-         */
         setAllowed(a: string): void;
-        /**
-         * The format to be used in the mask.
-         * @param f string of the format.
-         */
         setFormat(f: string): void;
-        /**
-         * Set the characters to be used as separators.
-         * @param s string representing the separator characters.
-         */
         setSeparator(s: string): void;
-        /**
-         * Set the characters that the user will be typing over.
-         * @param t string representing the characters that will be typed over.
-         */
         setTypeon(t: string): void;
-        /**
-         * Sets whether the mask is active.
-         */
         setEnabled(val: boolean): void;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Menu extends WebComponent {
         filter: string;
         filtering: boolean;
@@ -6017,6 +6919,7 @@ declare module Vidyano.WebComponents {
         collapsed: boolean;
         hasGlobalSearch: boolean;
         attached(): void;
+        detached(): void;
         private _filterChanged();
         private _search();
         private _computeHasGlobalSearch(isAttached);
@@ -6046,8 +6949,8 @@ declare module Vidyano.WebComponents {
         private _titleMouseenter();
     }
 }
-declare module Vidyano.WebComponents {
-    interface MessageDialogOptions extends DialogOptions {
+declare namespace Vidyano.WebComponents {
+    interface IMessageDialogOptions extends Vidyano.WebComponents.IDialogOptions {
         noClose?: boolean;
         title?: string;
         titleIcon?: string;
@@ -6058,16 +6961,16 @@ declare module Vidyano.WebComponents {
         html?: boolean;
     }
     class MessageDialog extends Dialog {
-        options: MessageDialogOptions;
+        options: IMessageDialogOptions;
         private _setOptions;
-        protected show(options: MessageDialogOptions): void;
+        protected show(options: IMessageDialogOptions): void;
         private _hasHeaderIcon(options);
         private _getActionType(options, index);
         private _onSelectAction(e);
         private _isFirst(index);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Notification extends WebComponent {
         serviceObject: Vidyano.ServiceObjectWithActions;
         isOverflowing: boolean;
@@ -6085,7 +6988,7 @@ declare module Vidyano.WebComponents {
         private _computeIcon(type);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Overflow extends WebComponent {
         private _overflownChildren;
         private _visibibleSizeChangedSkip;
@@ -6098,7 +7001,7 @@ declare module Vidyano.WebComponents {
         private _popup(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObject extends WebComponent {
         private _uniqueId;
         private _parameters;
@@ -6140,7 +7043,7 @@ declare module Vidyano.WebComponents {
     class PersistentObjectDetailsHeader extends WebComponent {
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectAttributePresenter extends WebComponent {
         private static _attributeImports;
         private _renderedAttribute;
@@ -6159,7 +7062,7 @@ declare module Vidyano.WebComponents {
         private _loadingChanged(loading);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectDialog extends Dialog {
         persistentObject: Vidyano.PersistentObject;
         private _forwardSave;
@@ -6173,7 +7076,7 @@ declare module Vidyano.WebComponents {
         private _onSelectAction(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectGroup extends WebComponent {
         private _items;
         private _itemsChecksum;
@@ -6190,7 +7093,7 @@ declare module Vidyano.WebComponents {
         private _onAttributeLoaded(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectPresenter extends WebComponent {
         private static _persistentObjectComponentLoader;
         private _cacheEntry;
@@ -6212,13 +7115,13 @@ declare module Vidyano.WebComponents {
         private _cancelSave();
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectTab extends WebComponent {
         tab: Vidyano.PersistentObjectAttributeTab;
         private _computeColumns(size, defaultColumnCount);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectTabBar extends WebComponent {
         private _observeDisposer;
         tabs: Vidyano.PersistentObjectTab[];
@@ -6236,19 +7139,21 @@ declare module Vidyano.WebComponents {
         private _computeHasBadge(badge);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PersistentObjectTabPresenter extends WebComponent {
         private static _persistentObjectTabComponentLoader;
         private _renderedTab;
+        private _tabAttributes;
         tab: Vidyano.PersistentObjectTab;
         templated: boolean;
         scroll: boolean;
         private _setLoading;
         private _setTemplated;
         private _renderTab(tab, isAttached);
+        private _attributeLoaded(e, detail);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PopupCore extends WebComponent {
         private static _isBuggyGetBoundingClientRect;
         private static _openPopups;
@@ -6265,6 +7170,7 @@ declare module Vidyano.WebComponents {
         sticky: boolean;
         hover: boolean;
         boundingTarget: HTMLElement;
+        closeDelay: number;
         protected _setOpen: (val: boolean) => void;
         private _setHover;
         popup(target: HTMLElement | WebComponent): Promise<any>;
@@ -6298,7 +7204,7 @@ declare module Vidyano.WebComponents {
         private _toggleSizeChanged(e, detail);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class PopupMenu extends WebComponent {
         private _openContextEventListener;
         contextMenuOnly: boolean;
@@ -6324,7 +7230,56 @@ declare module Vidyano.WebComponents {
     class PopupMenuItemSeparator extends WebComponent {
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
+    interface IProfilerServiceRequest extends Vidyano.IServiceRequest {
+        hasNPlusOne: boolean;
+        parameters: {
+            key: string;
+            value: string;
+        }[];
+        flattenedEntries: IFlattenedServiceRequestProfilerEntry[];
+    }
+    interface IFlattenedServiceRequestProfilerEntry {
+        entry: IServiceRequestProfilerEntry;
+        level: number;
+    }
+    class Profiler extends WebComponent {
+        private _boundMousehweel;
+        lastRequest: IProfilerServiceRequest;
+        selectedRequest: IProfilerServiceRequest;
+        zoom: number;
+        timelineSize: ISize;
+        profiledRequests: IProfilerServiceRequest[];
+        private _setLastRequest;
+        private _setSelectedRequest;
+        private _setHoveredEntry;
+        private _setSelectedEntry;
+        private _setZoom;
+        attached(): void;
+        detached(): void;
+        private _computeSQL(request);
+        private _computeSharpSQL(request);
+        private _isSelected(request, selectedRequest);
+        private _hasWarnings(request);
+        private _hasNPlusOne(request, entries?);
+        private _hasSelectedEntry(selectedEntry);
+        private _hasLastRequest(request);
+        private _onMousewheel(e);
+        private _selectRequest(e);
+        private _selectedRequestChanged();
+        private _profiledRequestsChanged(profiledRequests?);
+        private _renderRequestTimeline(request, size, zoom);
+        private _flattenEntries(entries?, level?, flattenedEntries?);
+        private _computeEntryClassName(e);
+        private _formatRequestParameters(request);
+        private _formatMs(ms);
+        private _formatDate(date);
+        private _selectedEntryChanged(entry);
+        private _closeSelectedEntry();
+        private _close(e);
+    }
+}
+declare namespace Vidyano.WebComponents {
     class ProgramUnitPresenter extends WebComponent {
         programUnit: Vidyano.ProgramUnit;
         private _setProgramUnit;
@@ -6332,7 +7287,7 @@ declare module Vidyano.WebComponents {
         private _programUnitChanged(programUnit, oldProgramUnit);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Query extends WebComponent {
         private _cacheEntry;
         query: Vidyano.Query;
@@ -6342,7 +7297,7 @@ declare module Vidyano.WebComponents {
         private _computeSearchOnHeader(noActions, query);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridCellTemplate extends Resource {
         static Load(source: string): PolymerTemplate;
         static Exists(name: string): boolean;
@@ -6358,7 +7313,7 @@ declare module Vidyano.WebComponents {
         private _valueChanged(value);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridColumnFilterProxyBase extends Vidyano.WebComponents.WebComponent {
         private _label;
         private _labelTextNode;
@@ -6373,7 +7328,7 @@ declare module Vidyano.WebComponents {
     class QueryGridColumnFilterProxy extends Vidyano.WebComponents.QueryGridColumnFilterProxyBase {
         private _upgrade();
     }
-    interface QueryGridColumnFilterDistinct {
+    interface IQueryGridColumnFilterDistinct {
         type: string;
         value: string;
         displayValue: string;
@@ -6382,14 +7337,14 @@ declare module Vidyano.WebComponents {
         private static _selector;
         private _openOnAttach;
         private _distinctHeight;
+        private _resizeStart;
         column: QueryGridColumn;
         searchText: string;
         label: string;
-        distincts: QueryGridColumnFilterDistinct[];
+        distincts: IQueryGridColumnFilterDistinct[];
         private _setLoading;
         attached(): void;
         private _popupOpening(e);
-        private _closePopup();
         private _distinctClick(e);
         private _updateFilters();
         private _updateDistincts();
@@ -6397,10 +7352,11 @@ declare module Vidyano.WebComponents {
         private _search();
         private _inverse(e);
         private _clear(e);
+        private _onResize(e, detail);
         private _catchClick(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridColumnFooter extends WebComponent {
         private _resizingRAF;
         private _column;
@@ -6414,11 +7370,12 @@ declare module Vidyano.WebComponents {
         protected _getTypeHint(name: string, defaultValue?: string): string;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridColumnHeader extends WebComponent {
         private _resizingRAF;
         private _column;
         private _columnObserver;
+        private _minimumColumnWidth;
         private _labelTextNode;
         private _filter;
         private _sorting;
@@ -6434,7 +7391,7 @@ declare module Vidyano.WebComponents {
         private _resizeTrack(e, detail);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridConfigureDialog extends Dialog {
         grid: QueryGrid;
         private _settings;
@@ -6461,7 +7418,7 @@ declare module Vidyano.WebComponents {
         private _toggleVisible();
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridFilters extends Vidyano.WebComponents.WebComponent {
         private _dialog;
         private _preventColumnFilterChangedListener;
@@ -6469,6 +7426,7 @@ declare module Vidyano.WebComponents {
         queryFilters: Vidyano.QueryFilters;
         currentFilter: Vidyano.QueryFilter;
         private _computeFilters(filters);
+        private _computeHidden(filters);
         private _computeDisabled(filters, currentFilter);
         private _computeHasFilters(filters);
         private _computeCanReset(currentFilter);
@@ -6483,14 +7441,14 @@ declare module Vidyano.WebComponents {
         private _delete(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryGridSelectAll extends WebComponent {
         query: Vidyano.Query;
         private _toggle();
     }
 }
-declare module Vidyano.WebComponents {
-    interface QueryGridItemTapEventArgs {
+declare namespace Vidyano.WebComponents {
+    interface IQueryGridItemTapEventArgs {
         item: Vidyano.QueryResultItem;
     }
     class QueryGrid extends WebComponent {
@@ -6512,19 +7470,21 @@ declare module Vidyano.WebComponents {
         private _hasPendingUpdates;
         private _itemOpening;
         private _lastSelectedItemIndex;
+        private _minimumColumnWidth;
         private _remainderWidth;
         private _settings;
         private _columnMenuColumn;
         private _lastUpdated;
         canReorder: boolean;
         rowHeight: number;
-        viewportSize: Size;
+        viewportSize: ISize;
         query: Vidyano.Query;
         asLookup: boolean;
         initializing: boolean;
         private _setInitializing;
         private _setViewportSize;
         private _setRowHeight;
+        private _setColumnWidthsCalculated;
         attached(): void;
         detached(): void;
         isColumnInView(column: QueryGridColumn): boolean;
@@ -6541,7 +7501,7 @@ declare module Vidyano.WebComponents {
         private _computeCanSelect(query, noSelection);
         private _computeCanSelectAll(canSelect, isAvailable);
         private _computeInlineActions(query, noInlineActions);
-        private _computeCanFilter(query);
+        private _computeHasTotalItem(totalItem, items, columnWidthsUpdated);
         private _updateTables(items, columns, canReorder, isAttached);
         private _updateVerticalSpacer(totalItems, rowHeight);
         private _updateTableHeadersAndFooters(columns);
@@ -6560,12 +7520,12 @@ declare module Vidyano.WebComponents {
         private _configureColumns();
         private _preventScroll(e);
     }
-    class QueryGridColumn implements QueryGridUserSettingsColumnData {
+    class QueryGridColumn implements IQueryGridUserSettingsColumnData {
         private _column;
         private _userSettingsColumnData;
         calculatedWidth: number;
         calculatedOffset: number;
-        constructor(_column: Vidyano.QueryColumn, _userSettingsColumnData: QueryGridUserSettingsColumnData);
+        constructor(_column: Vidyano.QueryColumn, _userSettingsColumnData: IQueryGridUserSettingsColumnData);
         column: Vidyano.QueryColumn;
         query: Vidyano.Query;
         name: string;
@@ -6575,14 +7535,14 @@ declare module Vidyano.WebComponents {
         canFilter: boolean;
         canListDistincts: boolean;
         sortDirection: SortDirection;
-        distincts: QueryColumnDistincts;
+        distincts: IQueryColumnDistincts;
         offset: number;
         isPinned: boolean;
         isHidden: boolean;
         width: string;
         reset(): void;
     }
-    interface QueryGridUserSettingsColumnData {
+    interface IQueryGridUserSettingsColumnData {
         offset?: number;
         isPinned?: boolean;
         isHidden?: boolean;
@@ -6593,7 +7553,7 @@ declare module Vidyano.WebComponents {
         private _columnsByName;
         private _columns;
         constructor(_query: Vidyano.Query, data?: {
-            [key: string]: QueryGridUserSettingsColumnData;
+            [key: string]: IQueryGridUserSettingsColumnData;
         });
         getColumn(name: string): QueryGridColumn;
         columns: QueryGridColumn[];
@@ -6747,7 +7707,7 @@ declare module Vidyano.WebComponents {
         private _tap(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryItemsPresenter extends WebComponent {
         private static _queryGridComponentLoader;
         private static _chartComponentLoader;
@@ -6763,7 +7723,7 @@ declare module Vidyano.WebComponents {
         private _bulkEdit();
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class QueryPresenter extends WebComponent {
         private static _queryComponentLoader;
         private _customTemplate;
@@ -6781,7 +7741,7 @@ declare module Vidyano.WebComponents {
         private _updateTitle(title);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     abstract class Resource extends WebComponent {
         private _loadedSource;
         name: string;
@@ -6794,18 +7754,17 @@ declare module Vidyano.WebComponents {
         private _nameChanged(name, oldName);
         protected _contentTarget: Node;
         private _load();
-        static register(info?: WebComponentRegistrationInfo): any;
+        static register(info?: IWebComponentRegistrationInfo): any;
         static LoadFragment(source: string | Resource, tagName: string): DocumentFragment;
         static LoadResource(source: string, tagName: string): Resource;
         static Exists(name: string, tagName: string): boolean;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Scroller extends WebComponent {
         private static _minBarSize;
         private _setHovering;
         private _setScrolling;
-        private _scrollbarWidth;
         private _verticalScrollHeight;
         private _verticalScrollTop;
         private _verticalScrollSpace;
@@ -6853,7 +7812,7 @@ declare module Vidyano.WebComponents {
         private _horizontalScrollbarParentTap(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Select extends WebComponent {
         private items;
         private filteredItems;
@@ -6863,7 +7822,7 @@ declare module Vidyano.WebComponents {
         private _lastMatchedInputValue;
         private _inputValue;
         private _pendingSelectedOption;
-        options: string[] | Common.KeyValuePair[];
+        options: string[] | Common.IKeyValuePair[];
         selectedOption: string;
         private _setSuggestion;
         private _setSelectedItem;
@@ -6887,16 +7846,16 @@ declare module Vidyano.WebComponents {
         private _equals(item1, item2);
         private _isReadonlyInput(readonly, disableFiltering);
     }
-    interface SelectItem {
+    interface ISelectItem {
         displayValue: string;
-        option: string | Common.KeyValuePair;
+        option: string | Common.IKeyValuePair;
     }
     class SelectOptionItem extends WebComponent {
-        item: SelectItem;
+        item: ISelectItem;
         private _onTap(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class SelectReferenceDialog extends Dialog {
         query: Vidyano.Query;
         canSelect: boolean;
@@ -6909,14 +7868,14 @@ declare module Vidyano.WebComponents {
         private _selectReference(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class SessionPresenter extends WebComponent {
         private _customTemplate;
         private _computeApplication(isAttached);
         private _computeSession(session);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class SignIn extends WebComponent {
         error: string;
         image: string;
@@ -6948,12 +7907,12 @@ declare module Vidyano.WebComponents {
         private _computeSigninButtonLabel(signingIn, signingInCounter);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class SignOut extends WebComponent {
         private _activate(e);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class SizeTracker extends WebComponent {
         private _resizeTimer;
         private _resizeTimerQueuedElements;
@@ -6972,11 +7931,13 @@ declare module Vidyano.WebComponents {
         private _resetTriggers(element);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     abstract class Sortable extends WebComponent {
         private _sortable;
         group: string;
         filter: string;
+        handle: string;
+        draggableItems: string;
         enabled: boolean;
         private _setIsDragging;
         private _setIsGroupDragging;
@@ -6984,19 +7945,21 @@ declare module Vidyano.WebComponents {
         detached(): void;
         groupChanged(): void;
         filterChanged(): void;
+        handleChanged(): void;
+        draggableItemsChangted(): void;
         protected _dragStart(): void;
         protected _dragEnd(element: HTMLElement, newIndex: number, oldIndex: number): void;
         private _create();
         private _destroy();
         private _enabledChanged(enabled);
-        static register(info?: WebComponentRegistrationInfo): any;
+        static register(info?: IWebComponentRegistrationInfo): any;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Spinner extends WebComponent {
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Style extends Vidyano.WebComponents.WebComponent {
         private _uniqueId;
         private _styleElement;
@@ -7008,7 +7971,7 @@ declare module Vidyano.WebComponents {
         setStyle(name: string, ...css: string[]): void;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class TimePicker extends WebComponent {
         hours: number;
         minutes: number;
@@ -7025,7 +7988,7 @@ declare module Vidyano.WebComponents {
         private _zeroPrefix(n);
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class User extends WebComponent {
         private service;
         isSignedIn: boolean;
@@ -7034,16 +7997,18 @@ declare module Vidyano.WebComponents {
         private _setIsSignedIn;
         private _setCanFeedback;
         private _setCanUserSettings;
+        private _setCanProfile;
         private _setUserName;
         attached(): void;
         signIn(): void;
         signOut(): void;
         feedback(): void;
         userSettings(): void;
+        private _showProfiler();
         private _signedInChanged();
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     module Keyboard {
         enum KeyCodes {
             backspace = 8,
@@ -7121,10 +8086,10 @@ declare module Vidyano.WebComponents {
             "z": string;
             "del": string;
         };
-        interface Event extends KeyboardEvent {
+        interface IEvent extends KeyboardEvent {
             keyIdentifier: string;
         }
-        interface KeysEvent extends CustomEvent {
+        interface IKeysEvent extends CustomEvent {
             detail: {
                 combo: string;
                 key: string;
@@ -7133,38 +8098,35 @@ declare module Vidyano.WebComponents {
                 altKey?: boolean;
                 metaKey?: boolean;
                 event: string;
-                keyboardEvent: Event;
+                keyboardEvent: IEvent;
             };
         }
-        interface KeybindingRegistration {
+        interface IKeybindingRegistration {
             keys: string[];
             element: HTMLElement;
-            listener: (e: KeysEvent) => void;
+            listener: (e: IKeysEvent) => void;
             nonExclusive: boolean;
             priority?: number;
             appRoute?: Vidyano.WebComponents.AppRoute;
         }
     }
-    interface Position {
+    interface IPosition {
         x: number;
         y: number;
     }
-    interface Size {
+    interface ISize {
         width: number;
         height: number;
     }
     var scrollbarWidth: () => number;
-    interface WebComponentKeybindingInfo {
+    interface IWebComponentKeybindingInfo {
         [keys: string]: {
             listener: string;
-            /**
-            * if nonExclusive is set to true then the observer will also be called when there are other observers bound to any of the same keys.
-            */
             nonExclusive?: boolean;
             priority?: number;
         } | string;
     }
-    interface WebComponentRegistrationInfo {
+    interface IWebComponentRegistrationInfo {
         properties?: PolymerProperties;
         hostAttributes?: {
             [name: string]: any;
@@ -7174,16 +8136,10 @@ declare module Vidyano.WebComponents {
         };
         observers?: string[];
         extends?: string;
-        /**
-        * Binds keys to local observer functions
-        */
-        keybindings?: WebComponentKeybindingInfo;
-        /**
-        * forwardObservers is used to forward Vidyano.Common.Observable notifications to Polymer notifyPath
-        */
+        keybindings?: IWebComponentKeybindingInfo;
         forwardObservers?: string[];
     }
-    interface ObserveChainDisposer {
+    interface IObserveChainDisposer {
         (): void;
     }
     class PolymerBase extends HTMLElement {
@@ -7217,14 +8173,6 @@ declare module Vidyano.WebComponents {
          * Cancels the async function call.
          */
         cancelAsync: (handle: number) => void;
-        /**
-          * Fire an event.
-          * @method fire
-          * @returns {Object} event
-          * @param {string} type An event name.
-          * @param {any} detail
-          * @param {Node} onNode Target node.
-          */
         fire: (type: string, detail: any, options?: {
             onNode?: Node;
             bubbles?: boolean;
@@ -7246,25 +8194,10 @@ declare module Vidyano.WebComponents {
          * Returns true if the named debounce task is waiting to run.
          */
         isDebouncerActive: (jobName: string) => void;
-        /**
-          * Adds new elements to the end of an array, returns the new length and notifies Polymer that the array has changed.
-        **/
         push: (path: string, ...items: any[]) => number;
-        /**
-          * Removes the last element of an array, returns that element and notifies Polymer that the array has changed.
-        **/
         pop: (path: string) => any;
-        /**
-          * Adds new elements to the beginning of an array, returns the new length and notifies Polymer that the array has changed.
-        **/
         unshift: (path: string, items: any[]) => number;
-        /**
-          * Removes the first element of an array, returns that element and notifies Polymer that the array has changed.
-        **/
         shift: (path: string) => any;
-        /**
-          * Adds/Removes elements from an array and notifies Polymer that the array has changed.
-        **/
         splice: (path: string, index: number, removeCount?: number, items?: any[]) => any[];
         /**
          * Dynamically imports an HTML document.
@@ -7296,10 +8229,6 @@ declare module Vidyano.WebComponents {
          * If node is specified, sets the class on node instead of the host element.
          */
         toggleClass: (name: string, bool: boolean, node?: Node | WebComponent) => void;
-        /**
-         * Toggles the named boolean attribute on the host element, adding the attribute if bool is truthy and removing it if bool is falsey.
-         * If node is specified, sets the attribute on node instead of the host element.
-        */
         toggleAttribute: (name: string, bool: boolean, node?: Node | WebComponent) => void;
         /**
          * Key-value pairs for the custom styles on the element.
@@ -7315,6 +8244,26 @@ declare module Vidyano.WebComponents {
          * Revaluates custom property values.
          */
         updateStyles: () => void;
+        /**
+         * Force immediate content distribution.
+         */
+        distributeContent: () => void;
+        /**
+         * Returns a list of effective child nodes for this element.
+         */
+        getEffectiveChildNodes: () => Node[];
+        /**
+         * Returns a list of effective child elements for this element.
+         */
+        getEffectiveChildren: () => HTMLElement[];
+        /**
+         * Returns the first effective child that matches selector.
+         */
+        queryEffectiveChildren: (selector: string) => HTMLElement;
+        /**
+         * Returns a list of effective children that match selector.
+         */
+        queryAllEffectiveChildren: (selector: string) => HTMLElement[];
     }
     abstract class WebComponent extends PolymerBase {
         private _appRequested;
@@ -7333,16 +8282,16 @@ declare module Vidyano.WebComponents {
         findParent<T>(condition: (element: Node) => boolean): T;
         translateMessage(key: string, ...params: string[]): string;
         protected escapeHTML(val: string): string;
-        protected _forwardObservable(source: Vidyano.Common.Observable<any> | Array<any>, path: string, pathPrefix: string, callback?: (path: string) => void): ObserveChainDisposer;
+        protected _forwardObservable(source: Vidyano.Common.Observable<any> | Array<any>, path: string, pathPrefix: string, callback?: (path: string) => void): IObserveChainDisposer;
         private _forwardComputed(value);
         private _forwardNegate(value);
         static getName(fnc: Function): string;
         private static _register(obj, info?, prefix?, ns?);
-        static register(obj: Function, info: WebComponentRegistrationInfo, prefix?: string, ns?: any): Function;
-        static register(info?: WebComponentRegistrationInfo, prefix?: string): any;
+        static register(obj: Function, info: IWebComponentRegistrationInfo, prefix?: string, ns?: any): Function;
+        static register(info?: IWebComponentRegistrationInfo, prefix?: string): any;
     }
 }
-declare module Vidyano.WebComponents {
+declare namespace Vidyano.WebComponents {
     class Website extends WebComponent {
         attached(): void;
     }

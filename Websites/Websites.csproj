@@ -112,12 +112,12 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Vidyano.Service, Version=5.1.33502.3775, Culture=neutral, PublicKeyToken=d51b97a7f46ba8b6, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vidyano.Service.5.1.33502.3775\lib\net45\Vidyano.Service.dll</HintPath>
+    <Reference Include="Vidyano.Service, Version=5.1.35900.3796, Culture=neutral, PublicKeyToken=d51b97a7f46ba8b6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vidyano.Service.5.1.35900.3796\lib\net45\Vidyano.Service.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Vidyano.Web2, Version=0.11.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vidyano.Web2.0.11.14.0-beta2\lib\net45\Vidyano.Web2.dll</HintPath>
+    <Reference Include="Vidyano.Web2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Vidyano.Web2.1.0.0-rc3\lib\net45\Vidyano.Web2.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -168,6 +168,16 @@
     <Content Include="App_Data\security.json" />
     <Content Include="App_Data\websites.json" />
     <Content Include="bower.json" />
+    <Content Include="WebComponents\Carousel\carousel.css">
+      <DependentUpon>carousel.scss</DependentUpon>
+    </Content>
+    <Content Include="WebComponents\Carousel\carousel.html" />
+    <Content Include="WebComponents\Carousel\carousel.js">
+      <DependentUpon>carousel.ts</DependentUpon>
+    </Content>
+    <Content Include="WebComponents\Carousel\carousel.min.css">
+      <DependentUpon>carousel.css</DependentUpon>
+    </Content>
     <Content Include="WebComponents\Lightbox\lightbox.css">
       <DependentUpon>lightbox.scss</DependentUpon>
     </Content>
@@ -211,6 +221,7 @@
     </Content>
     <Content Include="WebComponents\ContactForm\contact-form.scss" />
     <Content Include="WebComponents\Lightbox\lightbox.scss" />
+    <Content Include="WebComponents\Carousel\carousel.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Help\" />
@@ -218,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\vidyano\vidyano.d.ts" />
+    <TypeScriptCompile Include="WebComponents\Carousel\carousel.ts" />
     <TypeScriptCompile Include="WebComponents\Lightbox\lightbox.ts" />
     <TypeScriptCompile Include="WebComponents\ContactForm\contact-form.ts" />
     <TypeScriptCompile Include="WebComponents\PageAnchor\page-anchor.ts" />

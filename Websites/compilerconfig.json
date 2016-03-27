@@ -10,5 +10,9 @@
   {
     "outputFile": "App_Data/Websites/2sky/2sky.css",
     "inputFile": "App_Data/Websites/2sky/2sky.scss"
+  },
+  {
+    "outputFile": "WebComponents/Carousel/carousel.css",
+    "inputFile": "WebComponents/Carousel/carousel.scss"
   }
 ]

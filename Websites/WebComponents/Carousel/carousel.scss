@@ -1,0 +1,55 @@
+﻿:host {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+
+    #slider {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #overflow {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #inner {
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -moz-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -o-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -ms-transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -webkit-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -moz-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -o-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        -ms-transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        transition-timing-function: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+        margin-left: var(--carousel-left-margin, 0%);
+
+        ::content img {
+            float: left;
+        }
+    }
+
+    label {
+        background: #CCC;
+        display: inline-block;
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+
+        &[checked] {
+            background: #333;
+        }
+    }
+
+    input[type="radio"] {
+        display: none;
+    }
+}

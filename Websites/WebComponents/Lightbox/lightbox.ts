@@ -39,8 +39,57 @@ module Websites.WebComponents {
             _lightbox.thumbnails.push(this);
         }
 
-        private _tap() {
+        private _tap(e: TapEvent) {
             _lightbox.open(this, this.group);
+
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    }
+
+    @Vidyano.WebComponents.WebComponent.register({
+        extends: "img",
+        properties: {
+            img: {
+                type: String,
+                value: ""
+            },
+            thumb: {
+                type: String,
+                value: ""
+            },
+            group: {
+                type: String,
+                value: ""
+            }
+        },
+        observers: [
+            "_update(img, thumb, group)"
+        ],
+        listeners: {
+            "tap": "_tap"
+        }
+    })
+    export class LightboxImg extends Vidyano.WebComponents.WebComponent {
+        img: string;
+        group: string;
+
+        private _update(img: string, thumb: string, group: string) {
+            this.setAttribute("data-jslghtbx", img);
+            this.setAttribute("data-jslghtbx-group", group);
+
+            this.style.cursor = "pointer";
+
+            thumb = thumb || img;
+
+            _lightbox.thumbnails.push(this);
+        }
+
+        private _tap(e: TapEvent) {
+            _lightbox.open(this, this.group);
+
+            e.stopPropagation();
+            e.preventDefault();
         }
     }
 }
