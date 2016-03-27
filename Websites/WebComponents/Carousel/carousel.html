@@ -1,0 +1,19 @@
+﻿<dom-module id="vi-carousel">
+    <link rel="stylesheet" href="carousel.css" />
+    <template>
+        <div id="slider">
+            <div id="slides">
+                <div id="overflow">
+                    <div id="inner">
+                        <content></content>
+                    </div>
+                </div>
+            </div>
+            <template is="dom-repeat" items="[[images]]" as="image">
+                <label checked$="[[_isSelected(image, selectedIndex)]]" on-tap="_select"></label>
+            </template>
+        </div>
+    </template>
+</dom-module>
+
+<script src="carousel.js"></script>

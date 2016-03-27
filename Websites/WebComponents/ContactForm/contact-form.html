@@ -5,10 +5,10 @@
     <link rel="stylesheet" href="contact-form.css" />
     <template>
         <vi-grid>
-            <paper-input label="[[nameLabel]]" value="{{name}}" class="vi-grid-cell vi-grid-cell--6-col vi-grid-cell--8-col-tablet"></paper-input>
-            <paper-input label="[[emailLabel]]" value="{{email}}" class="vi-grid-cell vi-grid-cell--6-col vi-grid-cell--8-col-tablet"></paper-input>
-            <paper-textarea label="[[messageLabel]]" value="{{message}}" class="vi-grid-cell vi-grid-cell--12-col" rows="3"></paper-textarea>
-            <div class="vi-grid-cell vi-grid-cell--12-col">
+            <paper-input label="[[nameLabel]]" value="{{name}}" desktop-6 tablet-8></paper-input>
+            <paper-input label="[[emailLabel]]" value="{{email}}" desktop-6 tablet-8></paper-input>
+            <paper-textarea label="[[messageLabel]]" value="{{message}}" desktop-12 tablet-8 rows="3"></paper-textarea>
+            <div desktop-12 tablet-8>
                 <paper-button on-tap="_sendMessage">[[sendMessageLabel]]</paper-button>
             </div>
         </vi-grid>
