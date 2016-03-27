@@ -1,6 +1,14 @@
 ﻿$mainColor: #4682B4;
 $accentColor: #009688;
 
+@mixin radial-blues() {
+    background: $mainColor; /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(#437ed0, #023d75); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(#437ed0, #023d75); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(#437ed0, #023d75); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(#437ed0, #023d75); /* Standard syntax */
+}
+
 html, body {
     font-family: "Open Sans","Helvetica","Arial",sans-serif;
     font-size: 14px;
@@ -14,6 +22,7 @@ paper-toolbar {
     &.header {
         paper-icon-button[icon="menu"] {
             margin-right: 0 !important;
+            color: $mainColor;
         }
 
         nav {
@@ -27,6 +36,10 @@ paper-toolbar {
                 text-decoration: none !important;
                 text-transform: uppercase;
                 font-size: 12px;
+
+                &:first-child {
+                    display: none;
+                }
             }
         }
     }
@@ -85,44 +98,40 @@ section {
     }
 
     [is-phone] & {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     h2 {
-        font-size: 22px;
+        display: inline-block;
+        font-size: 26px;
         color: #333;
         font-weight: bold;
-        text-transform: uppercase;
         margin-top: 0;
-        position: relative;
-        padding-bottom: 12px;
-    
-        &:after {
-            position: absolute;
-            bottom: 0;
-            left: calc(50% - 75px);
-            height: 1px;
-            width: 150px;
-            content: " ";
-            background-image: -webkit-linear-gradient(left, #ffffff, $mainColor, #ffffff);
-            background-image: -moz-linear-gradient(left, #ffffff, $mainColor, #ffffff);
-            background-image: -ms-linear-gradient(left, #ffffff, $mainColor, #ffffff);
-            background-image: -o-linear-gradient(left, #ffffff, $mainColor, #ffffff);
-            opacity: 0.75;
-        }
+        padding-bottom: 24px;
+        margin: 0 auto;
     }
 
     h3 {
         color: #333;
     }
 
+    marked-element {
+        max-width: 950px;
+
+        p {
+            line-height: 1.5em;
+        }
+    }
+
+    &:nth-child(n+3) {
+        border-style: solid;
+        border-color: #E2E2E9;
+        border-width: 1px 0 0 0;
+    }
+
     &#Home {
-        background: $mainColor; /* For browsers that do not support gradients */
-        background: -webkit-radial-gradient(#0095e2, $mainColor); /* Safari 5.1 to 6.0 */
-        background: -o-radial-gradient(#0095e2, $mainColor); /* For Opera 11.6 to 12.0 */
-        background: -moz-radial-gradient(#0095e2, $mainColor); /* For Firefox 3.6 to 15 */
-        background: radial-gradient(#0095e2, $mainColor); /* Standard syntax */
+        @include radial-blues();
         color: white;
         min-height: 440px;
         text-transform: uppercase;
@@ -133,33 +142,53 @@ section {
             padding-right: 12px;
         }
 
-        &:before {
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            content: " ";
-            opacity: 0.1;
-            background-image: url(images/top.png);
-            background-repeat: repeat-x;
-            background-size: cover;
-            background-position: bottom left;
-        }
-
-        marked-element {
-            max-width: 800px;
-        }
-
         .title {
             font-size: 32px;
             line-height: normal;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 90px;
 
             [is-tablet] &, [is-phone] & {
                 font-size: 32px;
+            }
+        }
+
+        #clouds {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            overflow: hidden;
+
+            > div {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-repeat: no-repeat;
+                background-position: bottom center;
+
+                &:nth-child(1) {
+                    z-index: 2;
+                    bottom: -45px;
+                    background-image: url(images/top-clouds-1.png);
+                }
+
+                &:nth-child(2) {
+                    z-index: 1;
+                    bottom: -64px;
+                    background-image: url(images/top-clouds-2.png);
+                }
+
+                &:nth-child(3) {
+                    z-index: 0;
+                    bottom: -31px;
+                    background-image: url(images/top-clouds-3.png);
+                }
             }
         }
 
@@ -175,9 +204,25 @@ section {
             line-height: 20px;
             width: 150px;
         }
+
+        & + section {
+            padding-top: 20px;
+        }
     }
 
-    &#Advantages {
+    &#About {
+        p {
+            font-size: 18px;
+        }
+    }
+
+    &#WhyUs {
+        background-color: #F7F8FA;
+
+        p {
+            text-align: justify;
+        }
+
         marked-element {
             flex: 1;
         }
@@ -188,37 +233,45 @@ section {
             max-width: 1000px;
 
             > div {
+                background-color: #fafafa;
                 text-align: center;
-                padding: 0 12px;
+                border: 1px solid #e0e0e0;
+                border-bottom-width: 2px;
 
-                > img {
-                    opacity: 0.25;
+                .icon {
+                    padding: 24px 0;
+                    background-color: white;
+                    border-bottom: 1px solid #e0e0e0;
                 }
 
                 h3 {
                     white-space: nowrap;
-                    margin-bottom: 6px;
+                    margin: 0;
+                    padding: 24px 12px 6px 12px;
                 }
 
                 h4 {
-                    color: #666;
                     font-weight: 400;
-                    margin-top: 0;
+                    margin: 0;
+                    padding: 6px 12px 24px 12px;
                 }
             }
         }
     }
 
-    &#Approach {
-        border-style: solid;
-        border-color: #E2E2E9;
-        border-width: 1px 0;
-        background-color:#F7F8FA;
+    &#Specializations {
+        p {
+            text-align: justify;
+        }
+
+        vi-grid {
+            text-align: left;
+            line-height: 1.5em;
+        }
     }
 
     &#Contact {
-        border-top: 1px solid #eaebec;
-        background-color:#F7F8FA;
+        border-bottom-width: 1px;
     }
 }
 

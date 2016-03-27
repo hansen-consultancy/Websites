@@ -19,22 +19,22 @@
       "DefaultUser": "9fd5f914-60cf-44f6-959e-60b01c7ead10",
       "Pages": [
         {
-          "Name": "Advantages",
+          "Name": "About",
           "Label": {
-            "en": "Advantages",
-            "pt": "Advantages"
+            "en": "About",
+            "pt": "About"
           },
           "Queries": [],
           "Offset": 20
         },
         {
-          "Name": "Approach",
+          "Name": "Contact",
           "Label": {
-            "en": "Approach",
-            "pt": "Approach"
+            "en": "Contact",
+            "pt": "Contact"
           },
           "Queries": [],
-          "Offset": 30
+          "Offset": 50
         },
         {
           "Name": "Home",
@@ -44,6 +44,24 @@
           },
           "Queries": [],
           "Offset": 10
+        },
+        {
+          "Name": "Specializations",
+          "Label": {
+            "en": "Specializations",
+            "pt": "Specializations"
+          },
+          "Queries": [],
+          "Offset": 40
+        },
+        {
+          "Name": "WhyUs",
+          "Label": {
+            "en": "Why us",
+            "pt": "Why us"
+          },
+          "Queries": [],
+          "Offset": 30
         }
       ],
       "ContactFrom": "n6wbXRupCYnTAuwW/i9gLQUsZstimRWIZsS4krqV13Fpn0AtEKDRvrlvnF3mp6baMLZLpleqsy30D4Tua/5dqtY7sZAYCuvLLWUNPaKqhdX1M/OyLL3pN/vAjUElwhSp",

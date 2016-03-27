@@ -11,13 +11,15 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css">
     <link rel="import" href="../web2/websites.html" />
     <link rel="import" href="../web2/vulcanize/libs/imports.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/Carousel/carousel.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/Lightbox/lightbox.html" />
     <link rel="import" href="../web2/vulcanize/WebComponents/ContactForm/contact-form.html" />
     <link rel="import" href="../web2/vulcanize/WebComponents/PageAnchor/page-anchor.html" />
     <link rel="import" href="../web2/vulcanize/WebComponents/PageSection/page-section.html" />
     <link rel="stylesheet" href="static/2sky.css" />
 </head>
 
-<body class="fullbleed">
+<body class="fullbleed" unresolved>
     <vi-website class="fit">
         <template is="dom-template">
             <paper-drawer-panel force-narrow disable-edge-swipe right-drawer>
@@ -45,9 +47,12 @@
                                 <marked-element markdown="[[page.content]]"></marked-element>
                             </section>
                         </template>
-                        <!--<google-map fit-to-markers api-key="AIzaSyDifwwCw0WiG7SkuvsX861rTxCHp2ai0MY" zoom="18">
-                            <google-map-marker latitude="51.141535158125876" longitude="4.442151016235357" title="2sky"></google-map-marker>
-                        </google-map>-->
+                        <div class="relative">
+                            <div class="fit" onClick="style.pointerEvents='none'" style="background-color: transparent; z-index: 1;"></div>
+                            <google-map fit-to-markers api-key="AIzaSyDifwwCw0WiG7SkuvsX861rTxCHp2ai0MY" zoom="18">
+                                <google-map-marker latitude="51.141535158125876" longitude="4.442151016235357" title="2sky"></google-map-marker>
+                            </google-map>
+                        </div>
                         <footer class="layout horizontal center-center">Copyright © 2016 - 2sky</footer>
                     </div>
                 </paper-header-panel>

@@ -7,7 +7,8 @@
 paper-toolbar {
   background-color: white !important; }
   paper-toolbar.header paper-icon-button[icon="menu"] {
-    margin-right: 0 !important; }
+    margin-right: 0 !important;
+    color: #4682B4; }
   paper-toolbar.header nav {
     height: 56px;
     line-height: 56px; }
@@ -18,6 +19,8 @@ paper-toolbar {
       text-decoration: none !important;
       text-transform: uppercase;
       font-size: 12px; }
+      paper-toolbar.header nav a:first-child {
+        display: none; }
 
 paper-header-panel[drawer] a {
   display: block;
@@ -59,40 +62,36 @@ section {
     padding-left: 24px;
     padding-right: 24px; }
   [is-phone] section {
-    padding-left: 0;
-    padding-right: 0; }
+    padding-left: 12px;
+    padding-right: 12px; }
   section h2 {
-    font-size: 22px;
+    display: inline-block;
+    font-size: 26px;
     color: #333;
     font-weight: bold;
-    text-transform: uppercase;
     margin-top: 0;
-    position: relative;
-    padding-bottom: 12px; }
-    section h2:after {
-      position: absolute;
-      bottom: 0;
-      left: calc(50% - 75px);
-      height: 1px;
-      width: 150px;
-      content: " ";
-      background-image: -webkit-linear-gradient(left, #ffffff, #4682B4, #ffffff);
-      background-image: -moz-linear-gradient(left, #ffffff, #4682B4, #ffffff);
-      background-image: -ms-linear-gradient(left, #ffffff, #4682B4, #ffffff);
-      background-image: -o-linear-gradient(left, #ffffff, #4682B4, #ffffff);
-      opacity: 0.75; }
+    padding-bottom: 24px;
+    margin: 0 auto; }
   section h3 {
     color: #333; }
+  section marked-element {
+    max-width: 950px; }
+    section marked-element p {
+      line-height: 1.5em; }
+  section:nth-child(n+3) {
+    border-style: solid;
+    border-color: #E2E2E9;
+    border-width: 1px 0 0 0; }
   section#Home {
     background: #4682B4;
     /* For browsers that do not support gradients */
-    background: -webkit-radial-gradient(#0095e2, #4682B4);
+    background: -webkit-radial-gradient(#437ed0, #023d75);
     /* Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(#0095e2, #4682B4);
+    background: -o-radial-gradient(#437ed0, #023d75);
     /* For Opera 11.6 to 12.0 */
-    background: -moz-radial-gradient(#0095e2, #4682B4);
+    background: -moz-radial-gradient(#437ed0, #023d75);
     /* For Firefox 3.6 to 15 */
-    background: radial-gradient(#0095e2, #4682B4);
+    background: radial-gradient(#437ed0, #023d75);
     /* Standard syntax */
     color: white;
     min-height: 440px;
@@ -101,28 +100,42 @@ section {
     [is-phone] section#Home {
       padding-left: 12px;
       padding-right: 12px; }
-    section#Home:before {
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      content: " ";
-      opacity: 0.1;
-      background-image: url(images/top.png);
-      background-repeat: repeat-x;
-      background-size: cover;
-      background-position: bottom left; }
-    section#Home marked-element {
-      max-width: 800px; }
     section#Home .title {
       font-size: 32px;
       line-height: normal;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 2px; }
+      letter-spacing: 2px;
+      margin-bottom: 90px; }
       [is-tablet] section#Home .title, [is-phone] section#Home .title {
         font-size: 32px; }
+    section#Home #clouds {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      overflow: hidden; }
+      section#Home #clouds > div {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-repeat: no-repeat;
+        background-position: bottom center; }
+        section#Home #clouds > div:nth-child(1) {
+          z-index: 2;
+          bottom: -45px;
+          background-image: url(images/top-clouds-1.png); }
+        section#Home #clouds > div:nth-child(2) {
+          z-index: 1;
+          bottom: -64px;
+          background-image: url(images/top-clouds-2.png); }
+        section#Home #clouds > div:nth-child(3) {
+          z-index: 0;
+          bottom: -31px;
+          background-image: url(images/top-clouds-3.png); }
     section#Home a {
       color: white !important;
       text-decoration: none !important; }
@@ -132,32 +145,44 @@ section {
       font-size: 18px;
       line-height: 20px;
       width: 150px; }
-  section#Advantages marked-element {
-    flex: 1; }
-  section#Advantages vi-grid {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1000px; }
-    section#Advantages vi-grid > div {
-      text-align: center;
-      padding: 0 12px; }
-      section#Advantages vi-grid > div > img {
-        opacity: 0.25; }
-      section#Advantages vi-grid > div h3 {
-        white-space: nowrap;
-        margin-bottom: 6px; }
-      section#Advantages vi-grid > div h4 {
-        color: #666;
-        font-weight: 400;
-        margin-top: 0; }
-  section#Approach {
-    border-style: solid;
-    border-color: #E2E2E9;
-    border-width: 1px 0;
+    section#Home + section {
+      padding-top: 20px; }
+  section#About p {
+    font-size: 18px; }
+  section#WhyUs {
     background-color: #F7F8FA; }
+    section#WhyUs p {
+      text-align: justify; }
+    section#WhyUs marked-element {
+      flex: 1; }
+    section#WhyUs vi-grid {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1000px; }
+      section#WhyUs vi-grid > div {
+        background-color: #fafafa;
+        text-align: center;
+        border: 1px solid #e0e0e0;
+        border-bottom-width: 2px; }
+        section#WhyUs vi-grid > div .icon {
+          padding: 24px 0;
+          background-color: white;
+          border-bottom: 1px solid #e0e0e0; }
+        section#WhyUs vi-grid > div h3 {
+          white-space: nowrap;
+          margin: 0;
+          padding: 24px 12px 6px 12px; }
+        section#WhyUs vi-grid > div h4 {
+          font-weight: 400;
+          margin: 0;
+          padding: 6px 12px 24px 12px; }
+  section#Specializations p {
+    text-align: justify; }
+  section#Specializations vi-grid {
+    text-align: left;
+    line-height: 1.5em; }
   section#Contact {
-    border-top: 1px solid #eaebec;
-    background-color: #F7F8FA; }
+    border-bottom-width: 1px; }
 
 footer {
   padding: 32px 16px;

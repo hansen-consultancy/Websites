@@ -145,11 +145,13 @@
     <Content Include="App_Data\Websites\2sky\Images\expertise.png" />
     <Content Include="App_Data\Websites\2sky\Images\logo.png" />
     <Content Include="App_Data\Websites\2sky\Images\rapid.png" />
+    <Content Include="App_Data\Websites\2sky\Images\top-clouds-1.png" />
+    <Content Include="App_Data\Websites\2sky\Images\top-clouds-2.png" />
+    <Content Include="App_Data\Websites\2sky\Images\top-clouds-3.png" />
     <Content Include="App_Data\Websites\2sky\Images\top.png" />
     <Content Include="App_Data\Websites\2sky\Images\transparent.png" />
     <Content Include="App_Data\Websites\2sky\Images\trust.png" />
     <Content Include="App_Data\Websites\2sky\index.html" />
-    <None Include="App_Data\Websites\2sky\Pages\Advantages.md" />
     <Content Include="App_Data\Websites\Web²\index.html" />
     <Content Include="Global.asax" />
     <Content Include="libs\imports.html" />
@@ -205,7 +207,10 @@
     </Content>
     <Content Include="App_Data\Websites\2sky\2sky.scss" />
     <Content Include="App_Data\Websites\2sky\Pages\Home.md" />
-    <Content Include="App_Data\Websites\2sky\Pages\Approach.md" />
+    <Content Include="App_Data\Websites\2sky\Pages\About.md" />
+    <Content Include="App_Data\Websites\2sky\Pages\Contact.md" />
+    <Content Include="App_Data\Websites\2sky\Pages\Specializations.md" />
+    <Content Include="App_Data\Websites\2sky\Pages\WhyUs.md" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
