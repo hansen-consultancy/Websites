@@ -10,5 +10,9 @@
   {
     "outputFile": "WebComponents/Carousel/carousel.css",
     "inputFile": "WebComponents/Carousel/carousel.scss"
+  },
+  {
+    "outputFile": "App_Data/Websites/HansenConsultancy/hc.css",
+    "inputFile": "App_Data/Websites/HansenConsultancy/hc.scss"
   }
 ]
