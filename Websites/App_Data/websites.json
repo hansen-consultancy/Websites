@@ -5,6 +5,46 @@
         "*/old"
       ]
     },
+    "HansenConsultancy": {
+      "Label": {
+        "en": "Hansen consultancy",
+        "pt": "Hansen consultancy"
+      },
+      "Type": 1,
+      "Bindings": [
+        "*/hansenconsultancy"
+      ],
+      "DefaultUser": "910eea10-c739-4ab4-97e2-6bda7951a36e",
+      "Pages": [
+        {
+          "Name": "Contact",
+          "Label": {
+            "en": "Contact",
+            "pt": "Contact"
+          },
+          "Queries": [],
+          "Offset": 10
+        },
+        {
+          "Name": "Home",
+          "Label": {
+            "en": "Home",
+            "pt": "Home"
+          },
+          "Queries": [],
+          "Offset": 5
+        },
+        {
+          "Name": "Services",
+          "Label": {
+            "en": "Services",
+            "pt": "Services"
+          },
+          "Queries": [],
+          "Offset": 7
+        }
+      ]
+    },
     "Web²": {
       "Label": {
         "en": "Web²"

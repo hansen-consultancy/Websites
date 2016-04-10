@@ -1,0 +1,199 @@
+﻿$mainColor: #153544;
+$accentColor: #5A99CE;
+$textColor: black;
+
+$darkColor: #153544;
+$DarkColor2: #064058;
+$mediumColor: #366B7D;
+$lightColor: #87BFD6;
+
+html, body {
+    font-family: "Open Sans","Helvetica","Arial",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+paper-toolbar {
+    background-color: $mainColor !important;
+
+    &.header {
+        paper-icon-button[icon="menu"] {
+            color: white;
+            margin-right: 0 !important;
+        }
+
+        nav {
+            height: 56px;
+            line-height: 56px;
+
+            a {
+                display: inline-block;
+                padding: 0 12px;
+                color: white !important;
+                text-decoration: none !important;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+paper-header-panel[drawer] {
+    a {
+        display: block;
+        color: #333 !important;
+        text-decoration: none !important;
+        padding: 6px;
+        line-height: 32px;
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        &:focus, &:active {
+            background-color: #ccc;
+        }
+    }
+}
+
+marked-element {
+    margin: 0 auto;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    margin: 1em 0;
+    padding: 0;
+    background-image: -webkit-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+    background-image: -moz-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+    background-image: -ms-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+    background-image: -o-linear-gradient(left, #ffffff, $mainColor, #ffffff);
+    width: 150px;
+    left: calc(50% - 75px);
+    position: relative;
+    border: none;
+}
+
+google-map {
+    height: 500px;
+}
+
+section {
+    padding: 40px 80px;
+    box-sizing: border-box;
+    text-align: center;
+
+    [is-tablet] & {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    [is-phone] & {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    h2 {
+        color: $mainColor;
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: 2px;
+        margin-top: 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &#Home {
+        //background: url(Images/banner.jpg);
+        //background-position: left center;
+        //background-size: 150px;
+        background-repeat: no-repeat;
+        color: white;
+        background-color: $mainColor;
+        min-height: 300px;
+        text-transform: uppercase;
+        position: relative;
+
+        [is-phone] & {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        marked-element {
+            max-width: 800px;
+        }
+
+        .title {
+            font-size: 48px;
+            line-height: normal;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+
+            [is-tablet] &, [is-phone] & {
+                font-size: 32px;
+            }
+        }
+
+        a {
+            color: white !important;
+            text-decoration: none !important;
+        }
+
+        paper-button {
+            background-color: $accentColor;
+            margin-top: 40px;
+            font-size: 20px;
+            line-height: 30px;
+            width: 235px;
+        }
+    }
+
+    &#Services {
+        background-color: white;
+        //max-width: 1000px;
+        text-align: justify;
+
+
+
+
+        iron-icon {
+            color: $mainColor;
+        }
+
+        .service {
+            background-color: #FCFCFC;
+            border: 2px solid $mainColor;
+            text-align: center;
+
+            p {
+                text-align: justify;
+                padding: 0 5px 0 5px;
+            }
+        }
+    }
+
+    &#Contact {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        color:$mainColor;
+
+        iron-icon {
+            color: $mainColor;
+        }
+
+        vi-grid.contact-data {
+            margin-top: 40px;
+        }
+    }
+}
+
+footer {
+    padding: 32px 16px;
+    color: #9e9e9e;
+    background-color: $mainColor;
+}

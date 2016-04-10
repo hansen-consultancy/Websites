@@ -136,6 +136,13 @@
     <Content Include=".bowerrc">
       <DependentUpon>bower.json</DependentUpon>
     </Content>
+    <Content Include="App_Data\Websites\HansenConsultancy\hc.css">
+      <DependentUpon>hc.scss</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Websites\HansenConsultancy\hc.min.css">
+      <DependentUpon>hc.css</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Websites\HansenConsultancy\index.html" />
     <Content Include="App_Data\Websites\Web²\index.html" />
     <Content Include="Global.asax" />
     <Content Include="libs\imports.html" />
@@ -189,6 +196,12 @@
     <Content Include="WebComponents\PageSection\page-section.js">
       <DependentUpon>page-section.ts</DependentUpon>
     </Content>
+    <Content Include="App_Data\Websites\HansenConsultancy\hc.scss" />
+    <Content Include="App_Data\Websites\HansenConsultancy\Pages\Contact.md" />
+    <Content Include="App_Data\Websites\HansenConsultancy\Pages\Home.md" />
+    <Content Include="App_Data\Websites\HansenConsultancy\Pages\Services.md" />
+    <Content Include="App_Data\settings.json" />
+    <Content Include="App_Data\users.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -209,6 +222,7 @@
   <ItemGroup>
     <Folder Include="App_Data\Help\" />
     <Folder Include="App_Data\Icons\" />
+    <Folder Include="App_Data\Websites\HansenConsultancy\Images\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\vidyano\vidyano.d.ts" />
@@ -235,7 +249,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>20182</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

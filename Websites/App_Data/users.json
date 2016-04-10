@@ -1,0 +1,47 @@
+[
+  {
+    "Id": "33580331-2794-421d-a85c-aa7532d671f1",
+    "Name": "Admin",
+    "PasswordHash": "$2a$12$qE5JcWeMegAtJpy6vOtJ.O5PunH43xk9jLkLtIkPH.ZIqkv0h4n7K",
+    "MemberOf": [
+      "Administrators"
+    ],
+    "CreationDate": "2016-02-26T10:22:26.2644463+01:00",
+    "SettingsObject": {}
+  },
+  {
+    "$type": "Vidyano.Service.Repository.Group, Vidyano.Service",
+    "Id": "fe9429ba-d5cd-4e7c-bbe4-05a4c3497d97",
+    "IsSystem": true,
+    "Name": "Administrators",
+    "MemberOf": [
+      "Users"
+    ],
+    "CreationDate": "2016-02-26T10:22:26.2644463+01:00"
+  },
+  {
+    "Id": "910eea10-c739-4ab4-97e2-6bda7951a36e",
+    "Name": "HansenConsultancy",
+    "FriendlyName": "Hansen Consultancy",
+    "MemberOf": [
+      "Websites"
+    ],
+    "CreationDate": "2016-04-10T19:49:01.6967673+02:00",
+    "SettingsObject": {}
+  },
+  {
+    "$type": "Vidyano.Service.Repository.Group, Vidyano.Service",
+    "Id": "d3bd3312-0730-43d9-9bf4-9e14c75b00f7",
+    "IsSystem": true,
+    "Name": "Users",
+    "MemberOf": [],
+    "CreationDate": "2016-02-26T10:22:26.2644463+01:00"
+  },
+  {
+    "$type": "Vidyano.Service.Repository.Group, Vidyano.Service",
+    "Id": "7361d619-19c3-42f3-b860-730aa4cfcd1b",
+    "Name": "Websites",
+    "MemberOf": [],
+    "CreationDate": "2016-02-26T10:40:06.4005856+01:00"
+  }
+]

@@ -28,5 +28,10 @@ namespace Websites.Service
         {
             return base.CreateRepositoryConnection(ConnectionString ?? connectionString);
         }
+
+        public WebsitesAdvanced()
+        {
+            NoDatabase = true;
+        }
     }
 }
