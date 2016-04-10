@@ -1,5 +1,5 @@
-﻿$mainColor: #153544;
-$accentColor: #5A99CE;
+﻿$mainColor: #366B7D;
+$accentColor: #87BFD6;
 $textColor: black;
 
 $darkColor: #153544;
@@ -15,11 +15,11 @@ html, body {
 }
 
 paper-toolbar {
-    background-color: $mainColor !important;
+    background-color: white !important;
 
     &.header {
         paper-icon-button[icon="menu"] {
-            color: white;
+            color: $mainColor;
             margin-right: 0 !important;
         }
 
@@ -30,7 +30,7 @@ paper-toolbar {
             a {
                 display: inline-block;
                 padding: 0 12px;
-                color: white !important;
+                color: $mainColor !important;
                 text-decoration: none !important;
                 font-weight: 400;
             }
@@ -112,7 +112,7 @@ section {
         background-repeat: no-repeat;
         color: white;
         background-color: $mainColor;
-        min-height: 300px;
+        min-height: 400px;
         text-transform: uppercase;
         position: relative;
 
@@ -166,12 +166,13 @@ section {
 
         .service {
             background-color: #FCFCFC;
-            border: 2px solid $mainColor;
             text-align: center;
 
             p {
+                text-indent: 25px;
+                font-size: 12px;
                 text-align: justify;
-                padding: 0 5px 0 5px;
+                padding: 0 20px;
             }
         }
     }

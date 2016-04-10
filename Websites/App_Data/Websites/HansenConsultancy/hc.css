@@ -5,9 +5,9 @@
   line-height: 20px; }
 
 paper-toolbar {
-  background-color: #153544 !important; }
+  background-color: white !important; }
   paper-toolbar.header paper-icon-button[icon="menu"] {
-    color: white;
+    color: #366B7D;
     margin-right: 0 !important; }
   paper-toolbar.header nav {
     height: 56px;
@@ -15,7 +15,7 @@ paper-toolbar {
     paper-toolbar.header nav a {
       display: inline-block;
       padding: 0 12px;
-      color: white !important;
+      color: #366B7D !important;
       text-decoration: none !important;
       font-weight: 400; }
 
@@ -39,10 +39,10 @@ hr {
   border: 0;
   margin: 1em 0;
   padding: 0;
-  background-image: -webkit-linear-gradient(left, #ffffff, #153544, #ffffff);
-  background-image: -moz-linear-gradient(left, #ffffff, #153544, #ffffff);
-  background-image: -ms-linear-gradient(left, #ffffff, #153544, #ffffff);
-  background-image: -o-linear-gradient(left, #ffffff, #153544, #ffffff);
+  background-image: -webkit-linear-gradient(left, #ffffff, #366B7D, #ffffff);
+  background-image: -moz-linear-gradient(left, #ffffff, #366B7D, #ffffff);
+  background-image: -ms-linear-gradient(left, #ffffff, #366B7D, #ffffff);
+  background-image: -o-linear-gradient(left, #ffffff, #366B7D, #ffffff);
   width: 150px;
   left: calc(50% - 75px);
   position: relative;
@@ -62,7 +62,7 @@ section {
     padding-left: 0;
     padding-right: 0; }
   section h2 {
-    color: #153544;
+    color: #366B7D;
     font-weight: 600;
     font-size: 24px;
     letter-spacing: 2px;
@@ -72,8 +72,8 @@ section {
   section#Home {
     background-repeat: no-repeat;
     color: white;
-    background-color: #153544;
-    min-height: 300px;
+    background-color: #366B7D;
+    min-height: 400px;
     text-transform: uppercase;
     position: relative; }
     [is-phone] section#Home {
@@ -94,7 +94,7 @@ section {
       color: white !important;
       text-decoration: none !important; }
     section#Home paper-button {
-      background-color: #5A99CE;
+      background-color: #87BFD6;
       margin-top: 40px;
       font-size: 20px;
       line-height: 30px;
@@ -103,25 +103,26 @@ section {
     background-color: white;
     text-align: justify; }
     section#Services iron-icon {
-      color: #153544; }
+      color: #366B7D; }
     section#Services .service {
       background-color: #FCFCFC;
-      border: 2px solid #153544;
       text-align: center; }
       section#Services .service p {
+        text-indent: 25px;
+        font-size: 12px;
         text-align: justify;
-        padding: 0 5px 0 5px; }
+        padding: 0 20px; }
   section#Contact {
     max-width: 1000px;
     margin: 0 auto;
-    color: #153544; }
+    color: #366B7D; }
     section#Contact iron-icon {
-      color: #153544; }
+      color: #366B7D; }
     section#Contact vi-grid.contact-data {
       margin-top: 40px; }
 
 footer {
   padding: 32px 16px;
   color: #9e9e9e;
-  background-color: #153544; }
+  background-color: #366B7D; }
 
